@@ -5,7 +5,7 @@ import React from 'react';
 const Header = () => (
     <header className="header">
         <div className="menu container">
-            <a href="#" className="logo">Mi Portafolio</a>
+            <a href="#" class="logo">Mi Portafolio</a>
             <nav class="navigation">
                 <a href="#Inicio" >Inicio</a>
                 <a href="#Articulos">Artículos</a>
