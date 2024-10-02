@@ -1,250 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
   list-style: none;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  background: rgb(242, 219, 241);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-}
-
-.container {
-  width: 80%;
-  max-width: 900px;
-  margin: 30px auto;
-}
-
-.header {
-  background-color: #ecdaec;
-  display: flex;
-  align-items: center;
-  min-height: 70vh;
-  padding: 100px 0;
-}
-
-.menu {
+header {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  padding: 30px 100px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 .5rem 1rem rgba(92, 12, 64, 0.168);
 }
 
 .logo {
-  color: #e38dce;
-  font-size: 25px;
-  font-weight: 800;
-  text-transform: uppercase;
+  width: 150px;
+  pointer-events: none;
 }
 
-nav.barrita {
-  background-color: #e38dce;
-  padding: 10px 0;
-  border-bottom: 50%;
-}
-
-nav.barrita ul {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  margin: 0;
-}
-
-nav.barrita ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav.barrita ul li a {
-  color: #ffffff;
+.navigation a {
   text-decoration: none;
-  font-weight: bold;
-}
-
-.icono{
-  width: 20px;
-}
-
-#menu {
-  display: none;
-}
-
-.perfil-img {
-  width: 15px;
-  border-radius: 15%;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.menu label {
-  cursor: pointer;
-  display: none;
-}
-
-.submenu {
-  position: relative;
-}
-
-.header-content {
-  display: flex;
-}
-
-.header-txt {
-  flex-basis: 50%;
-}
-
-.header-txt span {
-  font-size: 16px;
-  color: #bdcb4b;
-  margin-bottom: 15px;
-  display: block;
-}
-
-header .social-icons a {
-  display: inline-block;
-  padding: 10px 20px;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-header .social-icons img {
-  width: 30px;
-  height: 30px;
-}
-
-.header-txt h1 {
-  font-size: 55px;
-  line-height: 1;
-  color: #333128;
-  margin-bottom: 25px;
-}
-
-.header-txt h2 {
-  font-size: 25px;
-  line-height: 1;
-  color: #333128;
-  margin-bottom: 25px;
-}
-
-p {
-  font-size: 16px;
-  color: #181713;
-  margin-bottom: 45px;
-}
-
-.btn-1 {
-  display: inline-block;
-  padding: 13px 25px;
-  color: #ffffff;
-  border-radius: 25px;
-  background-color: #bdcb4b;
-  text-transform: capitalize;
-}
-
-.header-img img {
-  width: 400px;
-}
-
-.information {
-  width: 70%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 25px 75px;
-  margin-top: -75px;
-  background-color: #ffffff;
-}
-
-.information-1 {
-  width: 80%;
-  max-width: 1000px;
-  margin: 30px auto;
-  background-color: #edc8e7;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.information-content {
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.texto {
-  text-align: left;
-}
-
-h3 {
-  font-size: 17px;
-  color: #181713;
-  text-transform: capitalize;
-}
-
-.proyectos {
-  padding: 0 0 100px 0;
-  width: 80%;
-  text-align: center;
-  max-width: 2000px;
-  margin: 30px auto;
-}
-
-.proyectos h2{
-  font-size: 40px;
-  color: #181713;
-  text-transform: capitalize;
-  margin-bottom: 55px;
-}
-
-.proyecto-content {
-  display: flex;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
-}
-
-.proyecto{
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  padding: 35px;
-}
-
-.proyecto h3 {
-  color: #e38dce;
-}
-
-.proyecto p {
-  font-size: 15px;
-  margin: 0;
-  color: #181713;
+  color: rgb(228, 27, 158);
+  padding: 6px 15px;
+  border-radius: 20px;
+  margin: 0 10px;
   font-weight: 600;
 }
 
-.btn-2 {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 7px 25px;
-  border-radius: 5px;
-  color: #ffffff;
-  background-color: #e38dce;
-}
-
-footer {
-  background: #cd31a6;
-  color: #ffffff;
-  padding: 10px 0;
-  text-align: center;
-  border-top: 2px solid #ffffff;
-}
-
-footer p {
-  margin: 0;
+.navigation a:hover,
+.navigation a.active {
+  background: rgb(222, 48, 198);
+  color: white;
 }

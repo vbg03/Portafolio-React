@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "./assets/Componentes/Header.jsx";
-import './App.css';
+import Header from "./assets/Componentes/header/Header.jsx";
+import './App.css'
 
 
 function App() {
