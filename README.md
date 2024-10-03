@@ -4,11 +4,10 @@ Este es el repositorio de mi portafolio personal, desarrollado con **React** y e
 
 ## Tabla de Contenidos:
 1. [Descripción](#descripción)
-2. [Estructura del Proyecto](#estructura-del-proyecto)
-3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-4. [Instalación y Uso](#instalación-y-uso)
-5. [Características](#características)
-6. [Créditos](#créditos)
+2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+3. [Instalación y Uso](#instalación-y-uso)
+4. [Características](#características)
+5. [Créditos](#créditos)
 
 ---
 
@@ -16,29 +15,6 @@ Este es el repositorio de mi portafolio personal, desarrollado con **React** y e
 
 Este sitio web tiene como objetivo servir como mi portafolio personal, mostrando mis proyectos, habilidades y proporcionando una forma fácil de contactarme. El diseño es **responsive** y visualmente atractivo para proporcionar una experiencia agradable a los visitantes.
 
-## Estructura del Proyecto
-
-La estructura del proyecto es la siguiente:
-
- ```bash
-├── public
-│   ├── imagenes
-│   │   └── perfil.jpg
-│   └── vite.svg
-├── src
-│   ├── assets
-│   │   ├── Componentes
-│   │   │   ├── Header.jsx
-│   │   │   ├── Inicio.jsx
-│   │   │   ├── SobreMi.jsx
-│   │   │   └── Proyectos.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   └── script.js
-├── index.html
-├── package.json
-└── README.md
-  ```
 
 ## Tecnologías Utilizadas
 
