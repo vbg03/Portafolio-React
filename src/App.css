@@ -243,11 +243,6 @@ span {
     font-size: 2.6rem
 }
 
-.habilidades-box p {
-    font-size: 1.6rem;
-    margin: 1rem 0 3rem;
-}
-
 .proyectos {
     background: var(--second-bg-color);
 }
