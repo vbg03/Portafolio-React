@@ -4,7 +4,7 @@ const SobreMi = () => {
   return (
     <section className="sobre" id='sobre'>
       <div className="sobre-img">
-        <img src="./public/Imagenes/yo.png" alt="" />
+        <img src="/Imagenes/yo.png" alt="Mi Imagen" />
       </div>
 
       <div className="sobre-content">
