@@ -19,7 +19,7 @@ const Inicio = () => {
             </div>
 
             <div className="inicio-img">
-                <img src="public/Imagenes/yo.png" alt="yo" />
+                <img src="./public/Imagenes/yo.png" alt="yo" />
             </div>
         </section>
     )
