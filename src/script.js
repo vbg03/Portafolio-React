@@ -31,3 +31,23 @@ window.onscroll = () => {
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
 };
+
+ScrollReveal({ 
+    /*reset: true,*/
+    distance: '80px',
+    duration: 2000,
+    delay: 200 
+});
+
+ScrollReveal().reveal('.inicio-content, .heading', { origin: 'top' });
+ScrollReveal().reveal('.inicio-img, .habilidades-container, .proyectos-box', { origin: 'bottom' });
+ScrollReveal().reveal('.inicio-content h1, .sobre-img', { origin: 'left' });
+ScrollReveal().reveal('.inicio-content p, .sobre-content', { origin: 'right' });
+
+const typed = new Typed('.multiple-text', {
+    strings: ['Estudiante', 'Ingeniera Multimedia'],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 100,
+    loop: true
+});

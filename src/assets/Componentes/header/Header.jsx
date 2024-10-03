@@ -13,7 +13,6 @@ const Header = () => (
             <a href="#sobre">Sobre mi</a>
             <a href="#habilidades">Habilidades</a>
             <a href="#proyectos">Proyectos</a>
-            <a href="#Contacto">Contacto</a>
         </nav>
     </header>
 );
