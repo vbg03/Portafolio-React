@@ -172,3 +172,44 @@ span {
 .btn:hover {
     box-shadow: none;
 }
+
+.habilidades h2 {
+    margin-bottom: 5rem;
+}
+
+.habilidades-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.habilidades-container .habilidades-box {
+    flex: 1 1 30rem;
+    background: var(--second-bg-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: .2rem solid var(--bg-color);
+    transition: .5s ease;
+}
+
+.habilidades-container .habilidades-box:hover {
+    border-color: var(--main-color);
+    transform: .5s ease;
+}
+
+.habilidades-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+}
+
+.habilidades-box h3 {
+    font-size: 2.6rem
+}
+
+.habilidades-box p {
+    font-size: 1.6rem;
+    margin: 1rem 0 3rem;
+}
