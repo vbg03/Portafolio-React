@@ -10,55 +10,55 @@ const Proyectos = () => {
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
                         <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Página responsive</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Página de login</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Número menor</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Contador</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Clase virtual</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 
                 <div className="proyectos-box">
                     <img src="public/Imagenes/github.png" alt="" />
                     <div className="proyectos-layer">
-                        <h4>Evitar archivos binarios</h4>
-                        <a href="#"><i className='bx bx-link-external' ></i></a>
+                        <h4>Reproducir un video en react</h4>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i className='bx bx-link-external' ></i></a>
                     </div>
                 </div>
 

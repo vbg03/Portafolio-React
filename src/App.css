@@ -217,6 +217,13 @@ span {
     transform: .5s ease;
 }
 
+.habilidades-box li {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    list-style: disc;
+    text-align: left;
+}
+
 .habilidades-box i {
     font-size: 7rem;
     color: var(--main-color);

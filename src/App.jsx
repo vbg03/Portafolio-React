@@ -7,14 +7,12 @@ import SobreMi from './assets/Componentes/sobre-mi/SobreMi.jsx';
 import Habilidades from './assets/Componentes/habilidades/Habilidades.jsx';
 import Proyectos from './assets/Componentes/proyectos/Proyectos.jsx';
 
-// Asegúrate de instalar ScrollReveal y Typed.js con npm
 import ScrollReveal from 'scrollreveal';
 import Typed from 'typed.js';
 
 function App() {
 
   useEffect(() => {
-    // Código de script.js aquí
 
     let menuIcon = document.querySelector('#menu-icon');
     let navbar = document.querySelector('.navbar');
@@ -68,7 +66,7 @@ function App() {
       loop: true
     });
 
-  }, []); // Este array vacío asegura que se ejecute solo una vez al cargar el componente
+  }, []);
 
   return (
     <div className="App">
