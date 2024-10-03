@@ -5,6 +5,7 @@ import Footer from './assets/Componentes/footer/Footer.jsx';
 import Inicio from './assets/Componentes/inicio/Inicio.jsx';
 import SobreMi from './assets/Componentes/sobre-mi/SobreMi.jsx';
 import Habilidades from './assets/Componentes/habilidades/Habilidades.jsx';
+import Proyectos from './assets/Componentes/proyectos/Proyectos.jsx';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Inicio />
       <SobreMi />
       <Habilidades />
+      <Proyectos />
       <Footer />
       {/* Aquí puedes agregar más componentes como Habilidades, Proyectos, Footer, etc. */}
     </div>
