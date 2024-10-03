@@ -20,6 +20,7 @@ Este sitio web tiene como objetivo servir como mi portafolio personal, mostrando
 
 La estructura del proyecto es la siguiente:
 
+ ```bash
 ├── public
 │   ├── imagenes
 │   │   └── perfil.jpg
@@ -37,7 +38,7 @@ La estructura del proyecto es la siguiente:
 ├── index.html
 ├── package.json
 └── README.md
-
+  ```
 
 ## Tecnologías Utilizadas
 
