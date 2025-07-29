@@ -476,6 +476,13 @@ span {
     transition: .5s ease;
 }
 
+.proyectos-layer {
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.95) 0%, 
+        rgba(255, 140, 66, 0.95) 100%);
+    backdrop-filter: blur(10px);
+}
+
 .proyectos-box:hover .proyectos-layer {
     transform: translateY(0);
 }
@@ -556,6 +563,34 @@ span {
     color: white;
 }
 
+/* Efectos especiales para multimedia */
+@keyframes floatImage {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
+    }
+    50% {
+        transform: translateY(-2.4rem) scale(1.02);
+        filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.2));
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
+    }
+}
+
+.inicio-img img,
+.sobre-img img {
+    filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
+    transition: all 0.3s ease;
+}
+
+.inicio-img img:hover,
+.sobre-img img:hover {
+    filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
+    transform: scale(1.02);
+}
+
 /* Scrollbar personalizado */
 ::-webkit-scrollbar {
     width: 8px;
@@ -619,11 +654,11 @@ span {
         left: 0;
         width: 100%;
         padding: 1rem 3%;
-        background: rgba(10, 10, 10, 0.98);
         border-top: 1px solid var(--border-color);
-        backdrop-filter: blur(10px);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
         display: none;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
     }
 
     .navbar.active {

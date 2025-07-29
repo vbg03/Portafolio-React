@@ -172,7 +172,7 @@ function App() {
     // Texto animado profesional (reemplaza Typed.js)
     const multipleTextElement = document.querySelector('.multiple-text');
     if (multipleTextElement) {
-      const texts = ['Ingeniera Multimedia'];
+      const texts = ['profesional', 'Ingeniera Multimedia'];
       let currentText = 0;
 
       const animateText = () => {
