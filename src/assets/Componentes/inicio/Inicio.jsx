@@ -7,7 +7,7 @@ const Inicio = () => {
                 <h3>Hola, yo soy</h3>
                 <h1>Valeria Bowers Gutierrez</h1>
                 <h3>Y soy una <span className='multiple-text'></span></h3>
-                <p>Apasionada por la
+                <p class="typewriter">Apasionada por la
                     programación y el diseño. Me especializo en crear experiencias
                     interactivas y productos digitales innovadores.</p>
                 <div className="social-media">

@@ -6,9 +6,9 @@ const Habilidades = () => {
             <h2 className="heading">Mis <span>Habilidades</span></h2>
 
             <div className="habilidades-container">
-                <div className="habilidades-box">
+                <div className="habilidades-box" class="habilidades-box card-3d">
                     <i className='bx bx-code-block'></i>
-                    <h3>Habilidades Duras</h3>
+                    <h3 class="shimmer-text">Habilidades Duras</h3>
                     <li><strong>Programación:</strong> Experiencia sólida en el desarrollo de soluciones
                         innovadoras y eficientes.</li>
                     <li><strong>Diseño:</strong> Capacidad para crear interfaces visualmente atractivas y
@@ -17,9 +17,9 @@ const Habilidades = () => {
                         modelado 3D de objetos y animación de escenarios y personajes.</li>
                 </div>
 
-                <div className="habilidades-box">
+                <div className="habilidades-box" class="habilidades-box card-3d">
                     <i className='bx bx-message-dots' ></i>
-                    <h3>Habilidades Blandas</h3>
+                    <h3 class="shimmer-text">Habilidades Blandas</h3>
                     <li><strong>Comunicación efectiva:</strong> Capaz de transmitir ideas de manera clara y
                         concisa, tanto en entornos técnicos como creativos. Facilito la
                         colaboración entre equipos multidisciplinarios, asegurando que todos
