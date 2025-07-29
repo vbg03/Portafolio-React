@@ -13,27 +13,22 @@
 
 :root {
     /* Colores principales - Tema oscuro profesional */
-    --bg-color: #0a0a0a;                    /* Negro profundo para fondo principal */
-    --second-bg-color: #1a1a1a;            /* Gris muy oscuro para secciones alternas */
-    --card-bg-color: #252525;              /* Gris oscuro para cards y elementos */
-    --text-color: #ffffff;                 /* Blanco puro para texto principal */
-    --text-secondary: #b0b0b0;             /* Gris claro para texto secundario */
+    --bg-color: #0a0a0a;
+    --second-bg-color: #1a1a1a;
+    --card-bg-color: #252525;
+    --text-color: #ffffff;
+    --text-secondary: #b0b0b0;
     
-    /* Acentos naranjas - Gradiente profesional */
-    --main-color: #ff6b35;                 /* Naranja vibrante principal */
-    --accent-color: #ff8c42;              /* Naranja suave para hover */
-    --bright-orange: #ff5722;             /* Naranja brillante para CTAs */
-    --dark-orange: #e55100;               /* Naranja oscuro para sombras */
+    /* Acentos naranjas */
+    --main-color: #ff6b35;
+    --accent-color: #ff8c42;
+    --bright-orange: #ff5722;
+    --dark-orange: #e55100;
     
     /* Gradientes profesionales */
     --gradient-primary: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
     --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
     --gradient-glow: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 140, 66, 0.1) 100%);
-    
-    /* Colores de estado */
-    --success-color: #4caf50;
-    --warning-color: #ffc107;
-    --error-color: #f44336;
     
     /* Efectos y sombras */
     --shadow-light: 0 4px 6px rgba(255, 107, 53, 0.1);
@@ -54,7 +49,7 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    /* Agregar textura sutil */
+    overflow-x: hidden; /* Prevenir scroll horizontal */
     background-image: 
         radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.02) 0%, transparent 50%);
@@ -65,13 +60,14 @@ section {
     color: var(--text-color);
     background: var(--bg-color);
     position: relative;
+    padding: 10rem 9% 2rem; /* Padding consistente */
+    overflow-x: hidden; /* Prevenir desbordamiento */
 }
 
 section:nth-child(even) {
     background: var(--second-bg-color);
 }
 
-/* Agregar efectos de partículas */
 section::before {
     content: '';
     position: absolute;
@@ -85,6 +81,7 @@ section::before {
     pointer-events: none;
 }
 
+/* ========== HEADER ========== */
 .header {
     position: fixed;
     top: 0;
@@ -99,12 +96,6 @@ section::before {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-.header.sticky {
-    background: rgba(10, 10, 10, 0.98);
-    border-bottom: 1px solid var(--border-accent);
-    box-shadow: var(--shadow-medium);
 }
 
 .logo {
@@ -154,16 +145,67 @@ section::before {
     display: none;
 }
 
+/* ========== INICIO ========== */
 .inicio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+.inicio-content {
+    flex: 1;
+    max-width: 60%; /* Limitar ancho para evitar desbordamiento */
+}
+
+.inicio-content h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.inicio-content h1 {
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.2));
+    word-wrap: break-word; /* Permitir salto de línea */
+}
+
+.inicio-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+    line-height: 1.6;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+span {
+    color: var(--main-color);
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+.inicio-img {
+    flex: 1;
+    max-width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .inicio-img img {
-    width: 35vw;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
     animation: floatImage 4s ease-in-out infinite;
-    margin-right: 5rem;
     filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
     transition: all 0.3s ease;
 }
@@ -188,48 +230,20 @@ section::before {
     }
 }
 
-.inicio-content h3 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    margin-left: 5rem;
-    color: var(--text-secondary);
-}
-
-.inicio-content h3:nth-of-type(2) {
-    margin-bottom: 2rem;
-}
-
-span {
-    color: var(--main-color);
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-}
-
-.inicio-content h1 {
-    font-size: 5.6rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-left: 5rem;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.2));
-}
-
-.inicio-content p {
-    font-size: 1.6rem;
-    margin-left: 5rem;
+.social-media {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .social-media a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
-    font-size: 2rem;
-    margin: 3rem -3rem 3rem 5rem;
+    font-size: 4rem;
     background: var(--card-bg-color);
     border: 2px solid var(--border-color);
     color: var(--main-color);
@@ -245,17 +259,27 @@ span {
     box-shadow: var(--glow-orange);
 }
 
+/* ========== SOBRE MÍ ========== */
 .sobre {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
     background: var(--second-bg-color);
+    padding: 10rem 9% 2rem;
+}
+
+.sobre-img {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
 }
 
 .sobre-img img {
-    width: 35vw;
-    margin-left: 5rem;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
     filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
     transition: all 0.3s ease;
 }
@@ -265,24 +289,34 @@ span {
     transform: scale(1.02);
 }
 
+.sobre-content {
+    flex: 1;
+    max-width: 60%;
+}
+
 .heading {
     text-align: center;
     font-size: 4.5rem;
+    margin-bottom: 3rem;
 }
 
 .sobre-content h2 {
     text-align: left;
     line-height: 1.2;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
 }
 
 .sobre-content h3 {
     font-size: 2.6rem;
+    margin-bottom: 2rem;
 }
 
 .sobre-content p {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
-    margin-right: 5rem;
+    line-height: 1.6;
+    word-wrap: break-word;
 }
 
 .btn {
@@ -300,6 +334,7 @@ span {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .btn::before {
@@ -322,6 +357,11 @@ span {
     left: 100%;
 }
 
+/* ========== HABILIDADES ========== */
+.habilidades {
+    padding: 10rem 9% 2rem;
+}
+
 .habilidades h2 {
     margin-bottom: 5rem;
 }
@@ -329,15 +369,17 @@ span {
 .habilidades-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .habilidades-container .habilidades-box {
-    flex: 1 1 30rem;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 500px;
     background: var(--card-bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 15px;
@@ -371,20 +413,12 @@ span {
     transform: scaleX(1);
 }
 
-.habilidades-box li {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    list-style: disc;
-    text-align: left;
-    margin-left: 5rem;
-    margin-right: 5rem;
-}
-
 .habilidades-box i {
     font-size: 7rem;
     color: var(--main-color);
     filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
     transition: all 0.3s ease;
+    margin-bottom: 2rem;
 }
 
 .habilidades-box:hover i {
@@ -394,10 +428,24 @@ span {
 
 .habilidades-box h3 {
     font-size: 2.6rem;
+    margin-bottom: 2rem;
 }
 
+.habilidades-box li {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    list-style: disc;
+    text-align: left;
+    margin: 1rem 0;
+    margin-left: 2rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* ========== PROYECTOS ========== */
 .proyectos {
     background: var(--second-bg-color);
+    padding: 10rem 9% 2rem;
 }
 
 .proyectos h2 {
@@ -406,22 +454,20 @@ span {
 
 .proyectos-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .proyectos-container .proyectos-box {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    display: flex;
     background: var(--card-bg-color);
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    aspect-ratio: 16/12;
 }
 
 .proyectos-box::before {
@@ -434,7 +480,7 @@ span {
     background: var(--gradient-primary);
     transform: scaleX(0);
     transition: transform 0.3s ease;
-    z-index: 1;
+    z-index: 2;
 }
 
 .proyectos-box:hover {
@@ -449,12 +495,14 @@ span {
 
 .proyectos-box img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: .5s ease;
 }
 
 .proyectos-box:hover img {
     transform: scale(1.1);
-} 
+}
 
 .proyectos-box .proyectos-layer {
     position: absolute;
@@ -471,16 +519,10 @@ span {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    padding: 0 4rem;
+    padding: 2rem;
     transform: translateY(100%);
     transition: .5s ease;
-}
-
-.proyectos-layer {
-    background: linear-gradient(135deg, 
-        rgba(255, 107, 53, 0.95) 0%, 
-        rgba(255, 140, 66, 0.95) 100%);
-    backdrop-filter: blur(10px);
+    z-index: 3; /* Asegurar que esté por encima */
 }
 
 .proyectos-box:hover .proyectos-layer {
@@ -488,9 +530,11 @@ span {
 }
 
 .proyectos-layer h4 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
 }
 
 .proyectos-layer a {
@@ -504,6 +548,9 @@ span {
     backdrop-filter: blur(10px);
     border-radius: 50%;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 4; /* Asegurar que el enlace sea clickeable */
+    cursor: pointer;
 }
 
 .proyectos-layer a:hover {
@@ -515,8 +562,10 @@ span {
 .proyectos-layer a i {
     font-size: 2rem;
     color: var(--main-color);
+    pointer-events: none; /* Permitir que el click pase al enlace padre */
 }
 
+/* ========== FOOTER ========== */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -563,35 +612,7 @@ span {
     color: white;
 }
 
-/* Efectos especiales para multimedia */
-@keyframes floatImage {
-    0% {
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
-    }
-    50% {
-        transform: translateY(-2.4rem) scale(1.02);
-        filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.2));
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
-    }
-}
-
-.inicio-img img,
-.sobre-img img {
-    filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
-    transition: all 0.3s ease;
-}
-
-.inicio-img img:hover,
-.sobre-img img:hover {
-    filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
-    transform: scale(1.02);
-}
-
-/* Scrollbar personalizado */
+/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -609,15 +630,19 @@ span {
     background: var(--bright-orange);
 }
 
-/* Efectos de selección */
 ::selection {
     background: rgba(255, 107, 53, 0.3);
     color: white;
 }
 
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1200px) {
     html {
         font-size: 55%;
+    }
+    
+    section {
+        padding: 10rem 5% 2rem;
     }
 }
 
@@ -630,12 +655,20 @@ span {
         padding: 10rem 3% 2rem;
     }
 
+    .inicio {
+        padding: 10rem 3% 2rem;
+    }
+
+    .sobre {
+        padding: 10rem 3% 2rem;
+    }
+
     .habilidades {
-        padding-bottom: 7rem;
+        padding: 10rem 3% 2rem;
     }
 
     .proyectos {
-        padding-bottom: 7rem;
+        padding: 10rem 3% 2rem;
     }
 
     .footer {
@@ -672,6 +705,7 @@ span {
         color: var(--text-secondary);
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 1rem;
+        margin-left: 0;
     }
 
     .navbar a:hover,
@@ -684,6 +718,13 @@ span {
 
     .inicio {
         flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .inicio-content,
+    .inicio-img {
+        max-width: 100%;
     }
 
     .inicio-content h3 {
@@ -691,29 +732,27 @@ span {
     }
 
     .inicio-content h1 {
-        font-size: 5rem;
-    }
-
-    .inicio-img img {
-        width: 70vw;
-        margin-top: 4rem;
+        font-size: 4.5rem;
     }
 
     .sobre {
         flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
     }
 
-    .sobre-img img {
-        width: 70vw;
-        margin-top: 4rem;
+    .sobre-img,
+    .sobre-content {
+        max-width: 100%;
     }
 
-    .habilidades h2 {
-        margin-bottom: 3rem;
+    .sobre-content h2 {
+        text-align: center;
     }
 
-    .proyectos h2 {
-        margin-bottom: 3rem;
+    .habilidades-container .habilidades-box {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
     .proyectos-container {
@@ -731,1209 +770,24 @@ span {
     html {
         font-size: 50%;
     }
+
+    .inicio-content h1 {
+        font-size: 4rem;
+    }
+
+    .heading,
+    .sobre-content h2 {
+        font-size: 3.5rem;
+    }
 }
 
 @media (max-width: 365px) {
-    .inicio-img img {
-        width: 90vw;
-    }
-
-    .sobre-img img {
-        width: 90vw;
-    }
-
     .footer {
         flex-direction: column-reverse;
+        gap: 2rem;
     }
 
     .footer p {
         text-align: center;
-        margin-top: 2rem;
-    }
-}
-
-/* ============= CURSOR PERSONALIZADO ============= */
-* {
-    cursor: none; /* Ocultar cursor por defecto */
-}
-
-.custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
-}
-
-.custom-cursor::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(255, 107, 53, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: cursorPulse 2s infinite;
-}
-
-@keyframes cursorPulse {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-}
-
-.custom-cursor.hover {
-    transform: scale(1.5);
-    background: var(--bright-orange);
-    box-shadow: 0 0 30px rgba(255, 87, 34, 0.8);
-}
-
-/* Restaurar cursor para elementos interactivos */
-a, button, .btn, [onclick] {
-    cursor: pointer !important;
-}
-
-/* ============= EFECTOS DE PARTÍCULAS ============= */
-.particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    background: var(--main-color);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: float 6s infinite linear;
-    opacity: 0.1;
-}
-
-.particle:nth-child(odd) {
-    background: var(--accent-color);
-    animation-duration: 8s;
-}
-
-.particle:nth-child(3n) {
-    background: var(--bright-orange);
-    animation-duration: 10s;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.1;
-    }
-    90% {
-        opacity: 0.1;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* ============= GRADIENTES COMPLEJOS MEJORADOS ============= */
-:root {
-    /* Gradientes adicionales más complejos */
-    --gradient-aurora: linear-gradient(45deg, 
-        #ff6b35 0%, 
-        #ff8c42 25%, 
-        #ff5722 50%, 
-        #e55100 75%, 
-        #ff6b35 100%);
-    
-    --gradient-mesh: conic-gradient(from 180deg at 50% 50%, 
-        #ff6b35 0deg, 
-        #ff8c42 72deg, 
-        #ff5722 144deg, 
-        #e55100 216deg, 
-        #ff6b35 288deg, 
-        #ff6b35 360deg);
-    
-    --gradient-glass: linear-gradient(135deg, 
-        rgba(255, 107, 53, 0.1) 0%, 
-        rgba(255, 140, 66, 0.05) 50%, 
-        rgba(255, 87, 34, 0.1) 100%);
-    
-    --gradient-neon: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 107, 53, 0.8) 50%, 
-        transparent 100%);
-}
-
-/* Efecto de malla de gradiente en el fondo */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 140, 66, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(255, 87, 34, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(229, 81, 0, 0.04) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ============= MICRO-ANIMACIONES ADICIONALES ============= */
-
-/* Efecto de brillo en hover para botones */
-.btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: var(--gradient-neon);
-    transform: rotate(45deg) translateX(-100%);
-    transition: transform 0.6s ease;
-    z-index: -1;
-}
-
-.btn:hover::after {
-    transform: rotate(45deg) translateX(100%);
-}
-
-/* Animación de escritura para texto */
-.typing-animation {
-    overflow: hidden;
-    border-right: 3px solid var(--main-color);
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--main-color); }
-}
-
-/* Efecto de ondas en cards */
-.habilidades-box,
-.proyectos-box {
-    position: relative;
-    overflow: hidden;
-}
-
-.habilidades-box::after,
-.proyectos-box::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-    transition: all 0.6s ease;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-}
-
-.habilidades-box:hover::after,
-.proyectos-box:hover::after {
-    width: 300px;
-    height: 300px;
-}
-
-/* Animación de texto brillante */
-.glowing-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.5));
-    }
-    to {
-        filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.8));
-    }
-}
-
-/* Efecto de levitación mejorado */
-.floating-enhanced {
-    animation: floatEnhanced 6s ease-in-out infinite;
-}
-
-@keyframes floatEnhanced {
-    0%, 100% {
-        transform: translateY(0) rotateZ(0deg);
-        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
-    }
-    25% {
-        transform: translateY(-20px) rotateZ(1deg);
-        filter: drop-shadow(0 25px 35px rgba(255, 107, 53, 0.15));
-    }
-    50% {
-        transform: translateY(-30px) rotateZ(0deg);
-        filter: drop-shadow(0 30px 40px rgba(255, 107, 53, 0.2));
-    }
-    75% {
-        transform: translateY(-20px) rotateZ(-1deg);
-        filter: drop-shadow(0 25px 35px rgba(255, 107, 53, 0.15));
-    }
-}
-
-/* Efecto de glassmorphism */
-.glass-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Animación de carga con barras */
-.loading-bars {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-}
-
-.loading-bar {
-    width: 4px;
-    height: 20px;
-    background: var(--gradient-primary);
-    animation: loadingBars 1.2s infinite ease-in-out;
-}
-
-.loading-bar:nth-child(2) { animation-delay: 0.1s; }
-.loading-bar:nth-child(3) { animation-delay: 0.2s; }
-.loading-bar:nth-child(4) { animation-delay: 0.3s; }
-
-@keyframes loadingBars {
-    0%, 40%, 100% { transform: scaleY(0.4); }
-    20% { transform: scaleY(1); }
-}
-
-/* Efecto de matriz de puntos */
-.dot-matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.dot {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: var(--main-color);
-    border-radius: 50%;
-    opacity: 0.1;
-    animation: dotPulse 4s infinite ease-in-out;
-}
-
-@keyframes dotPulse {
-    0%, 100% { opacity: 0.1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(1.5); }
-}
-
-/* Hover mejorado para imágenes */
-.enhanced-image-hover {
-    position: relative;
-    overflow: hidden;
-}
-
-.enhanced-image-hover::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: var(--gradient-mesh);
-    opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 1;
-    mix-blend-mode: overlay;
-}
-
-.enhanced-image-hover:hover::before {
-    opacity: 0.3;
-    animation: rotateGradient 2s linear infinite;
-}
-
-@keyframes rotateGradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Efecto de scroll reveal con líneas */
-.reveal-line {
-    position: relative;
-    overflow: hidden;
-}
-
-.reveal-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient-neon);
-    animation: revealLine 2s ease-out forwards;
-}
-
-@keyframes revealLine {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
-
-/* Responsive para efectos */
-@media (max-width: 768px) {
-    .particles-container {
-        display: none; /* Desactivar partículas en móvil para mejor rendimiento */
-    }
-    
-    .custom-cursor {
-        display: none; /* Desactivar cursor personalizado en móvil */
-    }
-    
-    * {
-        cursor: auto; /* Restaurar cursor normal en móvil */
-    }
-}
-
-/* Optimización de rendimiento */
-@media (prefers-reduced-motion: reduce) {
-    .particle,
-    .floating-enhanced,
-    .custom-cursor,
-    .glowing-text {
-        animation: none;
-    }
-    
-    .btn::after,
-    .habilidades-box::after,
-    .proyectos-box::after {
-        display: none;
-    }
-}
-
-/* ============= EFECTOS DE HOVER MICRO-ANIMADOS ============= */
-
-/* Efecto de ondas en botones */
-.btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.6s ease;
-}
-
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* Efecto de shake en hover para iconos */
-.social-media a:hover i,
-.footer-iconTop a:hover i {
-    animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-2px) rotate(-2deg); }
-    75% { transform: translateX(2px) rotate(2deg); }
-}
-
-/* ============= EFECTOS DE TEXTO AVANZADOS ============= */
-
-/* Efecto de máquina de escribir mejorado */
-.typewriter {
-    overflow: hidden;
-    border-right: 3px solid var(--main-color);
-    white-space: nowrap;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--main-color); }
-}
-
-/* Efecto de revelado de texto por palabras */
-.reveal-text {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: revealText 0.8s ease forwards;
-}
-
-.reveal-text:nth-child(2) { animation-delay: 0.1s; }
-.reveal-text:nth-child(3) { animation-delay: 0.2s; }
-.reveal-text:nth-child(4) { animation-delay: 0.3s; }
-
-@keyframes revealText {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Efecto de brillo en texto */
-.shimmer-text {
-    background: linear-gradient(
-        90deg,
-        var(--text-color) 25%,
-        var(--main-color) 50%,
-        var(--text-color) 75%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* ============= EFECTOS DE CARGA Y LOADING ============= */
-
-/* Spinner personalizado */
-.custom-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid var(--second-bg-color);
-    border-top: 3px solid var(--main-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Efecto de pulso en elementos de carga */
-.pulse-loading {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* ============= EFECTOS DE SCROLL MEJORADOS ============= */
-
-/* Barra de progreso de scroll */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--gradient-primary);
-    z-index: 9999;
-    transition: width 0.1s ease;
-}
-
-/* Indicador de sección activa */
-.section-indicator {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-}
-
-.section-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--border-color);
-    margin: 10px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.section-dot.active {
-    background: var(--main-color);
-    transform: scale(1.2);
-    box-shadow: 0 0 10px var(--main-color);
-}
-
-/* ============= EFECTOS DE PARALLAX CSS ============= */
-
-.parallax-element {
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-/* Efecto de profundidad en layers */
-.depth-layer-1 { transform: translateZ(0px) scale(1); }
-.depth-layer-2 { transform: translateZ(-1px) scale(2); }
-.depth-layer-3 { transform: translateZ(-2px) scale(3); }
-
-/* ============= MICRO-ANIMACIONES EN HOVER ============= */
-
-/* Efecto de flip en cards */
-.flip-card {
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-/* Efecto de zoom suave en imágenes */
-.zoom-hover {
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.zoom-hover img {
-    transition: all 0.3s ease;
-}
-
-.zoom-hover:hover img {
-    transform: scale(1.1);
-    filter: brightness(1.1) contrast(1.1);
-}
-
-/* ============= EFECTOS DE PARTÍCULAS CSS ============= */
-
-/* Estrellas de fondo */
-.stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: var(--main-color);
-    border-radius: 50%;
-    animation: twinkle 4s infinite;
-}
-
-.star:nth-child(2n) {
-    animation-delay: 1s;
-    animation-duration: 6s;
-}
-
-.star:nth-child(3n) {
-    animation-delay: 2s;
-    animation-duration: 8s;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* ============= EFECTOS DE GLASSMORPHISM AVANZADO ============= */
-
-.advanced-glass {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* ============= EFECTOS DE MORPHING ============= */
-
-.morph-shape {
-    background: var(--gradient-primary);
-    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-    animation: morph 8s ease-in-out infinite;
-}
-
-@keyframes morph {
-    0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-    50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
-    100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-}
-
-/* ============= EFECTOS DE ILUMINACIÓN ============= */
-
-.neon-glow {
-    text-shadow: 
-        0 0 5px var(--main-color),
-        0 0 10px var(--main-color),
-        0 0 15px var(--main-color),
-        0 0 20px var(--main-color);
-    animation: neonFlicker 2s infinite alternate;
-}
-
-@keyframes neonFlicker {
-    0%, 100% {
-        text-shadow: 
-            0 0 5px var(--main-color),
-            0 0 10px var(--main-color),
-            0 0 15px var(--main-color),
-            0 0 20px var(--main-color);
-    }
-    50% {
-        text-shadow: 
-            0 0 2px var(--main-color),
-            0 0 5px var(--main-color),
-            0 0 8px var(--main-color),
-            0 0 12px var(--main-color);
-    }
-}
-
-/* Efecto de luz que sigue al cursor */
-.cursor-light {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(
-        circle,
-        rgba(255, 107, 53, 0.1) 0%,
-        rgba(255, 107, 53, 0.05) 50%,
-        transparent 70%
-    );
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    transition: all 0.1s ease;
-}
-
-/* ============= EFECTOS DE ONDAS EXPANSIVAS ============= */
-
-.ripple-effect {
-    position: relative;
-    overflow: hidden;
-}
-
-.ripple-effect::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 107, 53, 0.3);
-    transform: translate(-50%, -50%);
-    animation: ripple 0.6s linear;
-}
-
-@keyframes ripple {
-    to {
-        width: 400px;
-        height: 400px;
-        opacity: 0;
-    }
-}
-
-/* ============= EFECTOS DE TRANSFORMACIÓN 3D ============= */
-
-.card-3d {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: all 0.5s ease;
-}
-
-.card-3d:hover {
-    transform: rotateX(10deg) rotateY(10deg) translateZ(20px);
-}
-
-.card-3d::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 107, 53, 0.1) 0%,
-        transparent 50%,
-        rgba(255, 140, 66, 0.1) 100%
-    );
-    transform: translateZ(-1px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card-3d:hover::before {
-    opacity: 1;
-}
-
-/* ============= EFECTOS DE LIQUID/BLOB ============= */
-
-.liquid-shape {
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    animation: liquidMove 6s ease-in-out infinite;
-}
-
-@keyframes liquidMove {
-    0%, 100% {
-        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-        transform: translate(0, 0) rotate(0deg);
-    }
-    20% {
-        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
-        transform: translate(10px, -5px) rotate(72deg);
-    }
-    40% {
-        border-radius: 40% 30% 60% 70%/40% 70% 60% 50%;
-        transform: translate(-5px, 10px) rotate(144deg);
-    }
-    60% {
-        border-radius: 70% 50% 40% 60%/30% 40% 70% 60%;
-        transform: translate(-10px, -10px) rotate(216deg);
-    }
-    80% {
-        border-radius: 50% 70% 30% 40%/60% 50% 40% 30%;
-        transform: translate(5px, 5px) rotate(288deg);
-    }
-}
-
-/* ============= EFECTOS DE MAGNETISMO ============= */
-
-.magnetic-hover {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: none;
-}
-
-.magnetic-hover:hover {
-    transform: scale(1.05);
-}
-
-/* Efecto magnético con JavaScript necesario para funcionar completamente */
-.magnetic-hover.magnetized {
-    transform: translate(var(--x, 0), var(--y, 0)) scale(1.05);
-}
-
-/* ============= EFECTOS DE PARTÍCULAS DE TEXTO ============= */
-
-.text-particles {
-    position: relative;
-    display: inline-block;
-}
-
-.text-particles::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: textDissolve 3s infinite;
-}
-
-@keyframes textDissolve {
-    0%, 100% {
-        opacity: 1;
-        filter: blur(0px);
-    }
-    50% {
-        opacity: 0.7;
-        filter: blur(2px);
-    }
-}
-
-/* ============= EFECTOS DE SCROLL SNAP MEJORADO ============= */
-
-.scroll-snap-container {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
-
-.scroll-snap-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-}
-
-/* ============= EFECTOS DE HOVER COMPLEJOS ============= */
-
-.complex-hover {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.complex-hover::before,
-.complex-hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.complex-hover::before {
-    background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 107, 53, 0.1) 50%,
-        transparent 70%
-    );
-    transform: translateX(-100%);
-}
-
-.complex-hover::after {
-    background: radial-gradient(
-        circle at center,
-        rgba(255, 107, 53, 0.2) 0%,
-        transparent 50%
-    );
-    transform: scale(0);
-}
-
-.complex-hover:hover::before {
-    opacity: 1;
-    transform: translateX(100%);
-}
-
-.complex-hover:hover::after {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* ============= EFECTOS DE LOADING AVANZADOS ============= */
-
-.dots-loading {
-    display: inline-block;
-}
-
-.dots-loading::after {
-    content: '';
-    animation: dots 2s infinite;
-}
-
-@keyframes dots {
-    0%, 20% { content: ''; }
-    40% { content: '.'; }
-    60% { content: '..'; }
-    80%, 100% { content: '...'; }
-}
-
-/* Efecto de ondas de carga */
-.wave-loading {
-    position: relative;
-    background: var(--card-bg-color);
-    overflow: hidden;
-}
-
-.wave-loading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 107, 53, 0.2),
-        transparent
-    );
-    animation: wave 2s infinite;
-}
-
-@keyframes wave {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
-
-/* ============= EFECTOS DE PERSPECTIVA ============= */
-
-.perspective-container {
-    perspective: 1000px;
-    perspective-origin: center center;
-}
-
-.perspective-card {
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-}
-
-.perspective-card:hover {
-    transform: rotateX(15deg) rotateY(15deg);
-}
-
-/* ============= EFECTOS DE ELASTIC ============= */
-
-.elastic-hover {
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.elastic-hover:hover {
-    transform: scale(1.1);
-}
-
-.elastic-hover:active {
-    transform: scale(0.95);
-}
-
-/* ============= RESPONSIVE PARA MICRO-ANIMACIONES ============= */
-
-@media (max-width: 768px) {
-    /* Simplificar animaciones en móviles */
-    .complex-hover::before,
-    .complex-hover::after,
-    .liquid-shape,
-    .morph-shape,
-    .card-3d {
-        animation: none;
-        transform: none;
-    }
-    
-    .neon-glow {
-        text-shadow: 0 0 5px var(--main-color);
-        animation: none;
-    }
-    
-    .cursor-light {
-        display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    /* Desactivar todas las animaciones para usuarios que prefieren movimiento reducido */
-    .shimmer-text,
-    .pulse-loading,
-    .twinkle,
-    .morph-shape,
-    .liquid-shape,
-    .neon-glow,
-    .text-particles::before {
-        animation: none;
-    }
-    
-    .card-3d:hover,
-    .perspective-card:hover,
-    .magnetic-hover:hover {
-        transform: none;
-    }
-}
-
-/* ============= UTILIDADES DE ANIMACIÓN ============= */
-
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-
-/* ============= EFECTOS DE HOVER PARA NAVEGACIÓN ============= */
-
-.nav-item {
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-item::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width 0.3s ease;
-}
-
-.nav-item:hover::before,
-.nav-item.active::before {
-    width: 100%;
-}
-
-.nav-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 107, 53, 0.1),
-        transparent
-    );
-    transition: left 0.5s ease;
-}
-
-.nav-item:hover::after {
-    left: 100%;
-}
-
-/* Efectos básicos para las animaciones */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.pulse-loading {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.shimmer-text {
-    background: linear-gradient(90deg, #ffffff 25%, #ff6b35 50%, #ffffff 75%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-.ripple-effect {
-    position: relative;
-    overflow: hidden;
-}
-
-.ripple-effect::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 107, 53, 0.3);
-    transform: translate(-50%, -50%);
-    animation: ripple 0.6s linear;
-}
-
-@keyframes ripple {
-    to {
-        width: 400px;
-        height: 400px;
-        opacity: 0;
-    }
-}
-
-/* Responsive - desactivar efectos en móvil */
-@media (max-width: 768px) {
-    .particles-container,
-    .custom-cursor {
-        display: none !important;
-    }
-    
-    * {
-        cursor: auto !important;
     }
 }
