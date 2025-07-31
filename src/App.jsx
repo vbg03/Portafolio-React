@@ -8,7 +8,6 @@ import Habilidades from './assets/Componentes/habilidades/Habilidades.jsx';
 import Proyectos from './assets/Componentes/proyectos/Proyectos.jsx';
 import ParticlesEffect from './assets/Componentes/effects/ParticlesEffect.jsx';
 import InteractiveBackground from './assets/Componentes/effects/InteractiveBackground.jsx';
-// LÍNEA ELIMINADA: import useScrollAnimations from './assets/hooks/useScrollAnimations.js';
 
 // GSAP imports
 import { gsap } from 'gsap';
@@ -33,9 +32,9 @@ function App() {
       ripple.style.width = '20px';
       ripple.style.height = '20px';
       ripple.style.pointerEvents = 'none';
-      
+
       element.appendChild(ripple);
-      
+
       setTimeout(() => {
         if (ripple.parentNode) {
           ripple.parentNode.removeChild(ripple);
@@ -46,7 +45,7 @@ function App() {
     const addGlowEffect = (element) => {
       element.style.boxShadow = '0 0 20px rgba(255, 107, 53, 0.5)';
       element.style.transition = 'box-shadow 0.3s ease';
-      
+
       setTimeout(() => {
         element.style.boxShadow = 'none';
       }, 300);
@@ -412,6 +411,228 @@ function App() {
         });
       }
     };
+
+    // ============= ANIMACIONES ESPECÍFICAS PARA HABILIDADES (CORREGIDAS) =============
+    // Reemplazar en el useEffect de App.jsx
+
+    // 1. Títulos de sección con efecto de revelado simple
+    gsap.fromTo('.section-title',
+      {
+        x: -50,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: '.habilidades',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 2. Cards de habilidades técnicas con animación suave (SIN rotaciones 3D)
+    gsap.fromTo('.gsap-habilidad-card',
+      {
+        y: 80,
+        opacity: 0,
+        scale: 0.8
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        stagger: {
+          amount: 0.8,
+          from: "start"
+        },
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 3. Iconos con efecto de escala simple
+    gsap.fromTo('.gsap-habilidad-icon',
+      {
+        scale: 0,
+        opacity: 0
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+        stagger: 0.1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 4. Iconos internos con efecto suave
+    gsap.fromTo('.gsap-icon',
+      {
+        scale: 0.5,
+        opacity: 0
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'elastic.out(1, 0.5)',
+        stagger: 0.1,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 5. Títulos con efecto de deslizamiento lateral
+    gsap.fromTo('.gsap-titulo',
+      {
+        x: 30,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.1,
+        delay: 0.6,
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 6. Tags de tecnologías con animación en cascada
+    gsap.fromTo('.gsap-tech-tag',
+      {
+        y: 20,
+        opacity: 0,
+        scale: 0.8
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: 'back.out(1.7)',
+        stagger: {
+          amount: 0.6,
+          from: "start"
+        },
+        delay: 0.8,
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 7. Descripciones con fade-in suave
+    gsap.fromTo('.gsap-descripcion',
+      {
+        y: 15,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.1,
+        delay: 1,
+        scrollTrigger: {
+          trigger: '.habilidades-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 8. Habilidades blandas con animación lateral simple
+    gsap.fromTo('.gsap-habilidad-blanda',
+      {
+        x: (index) => index % 2 === 0 ? -50 : 50,
+        opacity: 0,
+        scale: 0.9
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.habilidades-blandas-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 9. Iconos de habilidades blandas
+    gsap.fromTo('.gsap-blanda-icon',
+      {
+        scale: 0,
+        opacity: 0
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'elastic.out(1, 0.5)',
+        stagger: 0.15,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: '.habilidades-blandas-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 10. Contenido de habilidades blandas
+    gsap.fromTo('.gsap-blanda-content',
+      {
+        opacity: 0,
+        y: 20
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.15,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: '.habilidades-blandas-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
 
     // ============= EFECTOS DE CARGA =============
 

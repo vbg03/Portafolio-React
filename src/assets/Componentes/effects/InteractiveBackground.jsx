@@ -8,7 +8,6 @@ const InteractiveBackground = () => {
     // Solo ejecutar en desktop para mejor rendimiento
     if (window.innerWidth <= 768) return;
 
-    // ============= CREAR CANVAS =============
     const canvas = document.createElement('canvas');
     canvas.style.cssText = `
       position: fixed;
@@ -98,7 +97,7 @@ const InteractiveBackground = () => {
     };
   }, []);
 
-  return null; // Este componente no renderiza nada visible
+  return null;
 };
 
 export default InteractiveBackground;
