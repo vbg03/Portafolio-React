@@ -1136,6 +1136,7 @@ span {
         opacity: 0;
         transform: scale(0.9) translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -1512,6 +1513,275 @@ span {
 ::selection {
     background: rgba(255, 107, 53, 0.3);
     color: white;
+}
+
+
+/* ========== CORRECCIONES PARA OVERLAY FIJO ========== */
+.proyecto-overlay-fixed {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 3;
+    /* Eliminamos cualquier transformación que pueda causar problemas */
+    transform: none !important;
+    will-change: auto;
+}
+
+/* Reemplazar la clase anterior .proyecto-overlay */
+.proyecto-overlay {
+    display: none;
+    /* Ocultar la clase anterior */
+}
+
+/* ========== COLABORADORES EN TARJETAS ========== */
+.proyecto-colaboradores {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-left: 1rem;
+}
+
+.proyecto-colaboradores i {
+    color: var(--main-color);
+}
+
+/* ========== MODAL - SECCIÓN DE COLABORADORES ========== */
+.modal-colaboradores {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 107, 53, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.modal-colaboradores h4 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-colaboradores h4::before {
+    content: '\ed51';
+    /* Icono de grupo de Boxicons */
+    font-family: 'boxicons';
+    color: var(--main-color);
+    font-size: 2rem;
+}
+
+.colaboradores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.colaborador-card {
+    background: var(--card-bg-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.colaborador-card:hover {
+    border-color: var(--main-color);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.1);
+    transform: translateY(-2px);
+}
+
+.colaborador-card h5 {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.colaborador-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.colaborador-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.colaborador-link.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.colaborador-link.linkedin:hover {
+    background: #005582;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+.colaborador-link.portfolio {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.colaborador-link.portfolio:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+/* ========== CURSOR PERSONALIZADO - CORRECCIONES ========== */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--main-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: all 0.15s ease;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor.clicking {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: var(--accent-color);
+}
+
+.custom-cursor.hovering {
+    transform: translate(-50%, -50%) scale(2);
+    background: rgba(255, 107, 53, 0.6);
+}
+
+/* Asegurar que el cursor se muestre correctamente en el modal */
+.proyecto-modal-overlay .custom-cursor {
+    z-index: 10001 !important;
+}
+
+/* ========== NAVEGACIÓN - CORRECCIONES PARA CURSOR ========== */
+.navbar a {
+    position: relative;
+    cursor: none;
+    /* Ocultar cursor nativo en navegación */
+}
+
+.navbar a:hover {
+    cursor: none;
+}
+
+/* ========== CORRECCIONES PARA PARALLAX EN MEDIA ========== */
+.proyecto-media {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    background: #000;
+    /* Eliminar cualquier transformación que pueda causar problemas */
+    transform: none !important;
+    will-change: auto;
+}
+
+/* Deshabilitar el parallax problemático */
+.proyecto-media * {
+    will-change: auto !important;
+}
+
+/* ========== MODAL - PREVENIR SCROLL ISSUES ========== */
+.proyecto-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    /* Asegurar que el cursor funcione */
+    cursor: none;
+}
+
+.proyecto-modal {
+    background: var(--card-bg-color);
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid var(--border-color);
+    animation: modalSlideIn 0.3s ease-out;
+    /* Asegurar que el cursor funcione */
+    cursor: auto;
+}
+
+/* ========== RESPONSIVE PARA COLABORADORES ========== */
+@media (max-width: 768px) {
+    .colaboradores-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .colaborador-card {
+        padding: 1.2rem;
+    }
+
+    .colaborador-card h5 {
+        font-size: 1.4rem;
+    }
+
+    .colaborador-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .colaborador-link {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .proyecto-colaboradores {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .modal-colaboradores {
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .modal-colaboradores h4 {
+        font-size: 1.6rem;
+    }
+
+    .colaborador-card {
+        padding: 1rem;
+    }
+
+    .colaborador-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
 }
 
 /* ========== RESPONSIVE ========== */
