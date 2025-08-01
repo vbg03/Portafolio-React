@@ -142,6 +142,49 @@ const Proyectos = () => {
         setProyectoActivo(null);
     };
 
+    // Efecto para manejar scroll del body y cursor cuando se abre el modal
+    useEffect(() => {
+        if (proyectoActivo) {
+            // Deshabilitar scroll del body
+            document.body.style.overflow = 'hidden';
+            
+            // Ocultar cursor personalizado
+            const customCursor = document.querySelector('.custom-cursor');
+            if (customCursor) {
+                customCursor.style.display = 'none';
+            }
+            
+            // Agregar clase al body para restaurar cursor nativo
+            document.body.style.cursor = 'auto';
+            document.body.classList.add('modal-open');
+        } else {
+            // Rehabilitar scroll del body
+            document.body.style.overflow = 'unset';
+            
+            // Mostrar cursor personalizado nuevamente
+            const customCursor = document.querySelector('.custom-cursor');
+            if (customCursor) {
+                customCursor.style.display = 'block';
+            }
+            
+            // Remover cursor nativo y clase
+            document.body.style.cursor = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Limpiar al desmontar el componente
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.style.cursor = 'none';
+            document.body.classList.remove('modal-open');
+            
+            const customCursor = document.querySelector('.custom-cursor');
+            if (customCursor) {
+                customCursor.style.display = 'block';
+            }
+        };
+    }, [proyectoActivo]);
+
     return (
         <section className="proyectos" id='proyectos'>
             <h2 className="heading">Mis <span>Proyectos</span></h2>
@@ -177,7 +220,8 @@ const Proyectos = () => {
                                     e.target.src = "/Imagenes/github.png"; // Imagen por defecto
                                 }}
                             />
-                            <div className="proyecto-overlay">
+                            {/* Overlay fijo - SIN parallax que cause problemas */}
+                            <div className="proyecto-overlay-fixed">
                                 <div className="proyecto-categoria">{proyecto.categoria}</div>
                                 <div className="proyecto-año">{proyecto.año}</div>
                             </div>
@@ -197,16 +241,18 @@ const Proyectos = () => {
                             </div>
 
                             <div className="proyecto-acciones">
-                                <a
-                                    href={proyecto.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="proyecto-link github-link"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <i className='bx bxl-github'></i>
-                                    Código
-                                </a>
+                                {proyecto.githubUrl && (
+                                    <a
+                                        href={proyecto.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="proyecto-link github-link"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <i className='bx bxl-github'></i>
+                                        Código
+                                    </a>
+                                )}
                                 {proyecto.demoUrl && (
                                     <a
                                         href={proyecto.demoUrl}
@@ -236,6 +282,12 @@ const Proyectos = () => {
                                     <i className='bx bx-time'></i>
                                     {proyecto.duracion}
                                 </span>
+                                {proyecto.colaboradores && proyecto.colaboradores.length > 0 && (
+                                    <span className="proyecto-colaboradores">
+                                        <i className='bx bx-group'></i>
+                                        {proyecto.colaboradores.length} colaborador{proyecto.colaboradores.length > 1 ? 'es' : ''}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -290,16 +342,56 @@ const Proyectos = () => {
                                     </div>
                                 </div>
 
+                                {/* Sección de colaboradores CORREGIDA */}
+                                {proyectoActivo.colaboradores && proyectoActivo.colaboradores.length > 0 && (
+                                    <div className="modal-colaboradores">
+                                        <h4>Colaboradores:</h4>
+                                        <div className="colaboradores-grid">
+                                            {proyectoActivo.colaboradores.map((colaborador, index) => (
+                                                <div key={index} className="colaborador-card">
+                                                    <h5>{colaborador.nombre}</h5>
+                                                    <div className="colaborador-links">
+                                                        {colaborador.linkedin && (
+                                                            <a
+                                                                href={colaborador.linkedin}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="colaborador-link linkedin"
+                                                            >
+                                                                <i className='bx bxl-linkedin'></i>
+                                                                LinkedIn
+                                                            </a>
+                                                        )}
+                                                        {colaborador.portfolio && (
+                                                            <a
+                                                                href={colaborador.portfolio}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="colaborador-link portfolio"
+                                                            >
+                                                                <i className='bx bx-link-external'></i>
+                                                                Portfolio
+                                                            </a>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="modal-acciones">
-                                    <a
-                                        href={proyectoActivo.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="modal-btn github-btn"
-                                    >
-                                        <i className='bx bxl-github'></i>
-                                        Ver en GitHub
-                                    </a>
+                                    {proyectoActivo.githubUrl && (
+                                        <a
+                                            href={proyectoActivo.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="modal-btn github-btn"
+                                        >
+                                            <i className='bx bxl-github'></i>
+                                            Ver en GitHub
+                                        </a>
+                                    )}
                                     {proyectoActivo.demoUrl && (
                                         <a
                                             href={proyectoActivo.demoUrl}
