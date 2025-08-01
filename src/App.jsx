@@ -62,6 +62,8 @@ function App() {
       };
     }
 
+
+
     // ============= NAVEGACIÓN ACTIVA MEJORADA =============
     let sections = document.querySelectorAll('section');
     let navlinks = document.querySelectorAll('header nav a');
@@ -242,28 +244,338 @@ function App() {
       }
     );
 
-    // Proyectos con efecto de matriz
-    gsap.fromTo('.proyectos-box',
-      { y: 120, opacity: 0, rotationX: 60, scale: 0.3 },
+    // 1. Animación de entrada para las tarjetas de proyecto
+    gsap.fromTo('.proyecto-card',
+      {
+        y: 80,
+        opacity: 0,
+        scale: 0.8,
+        rotationX: 15
+      },
       {
         y: 0,
         opacity: 1,
-        rotationX: 0,
         scale: 1,
-        duration: 1.4,
-        stagger: {
-          amount: 1.2,
-          grid: [3, 3],
-          from: "center"
-        },
+        rotationX: 0,
+        duration: 1.2,
         ease: 'power3.out',
+        stagger: {
+          amount: 1,
+          from: "start"
+        },
         scrollTrigger: {
-          trigger: '.proyectos-container',
+          trigger: '.proyectos-container-mejorado',
           start: 'top 80%',
           toggleActions: 'play none none reverse'
         }
       }
     );
+
+    // 2. Animación para los títulos de proyecto
+    gsap.fromTo('.proyecto-titulo',
+      {
+        x: -30,
+        opacity: 0
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.15,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: '.proyectos-container-mejorado',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 3. Animación para las descripciones
+    gsap.fromTo('.proyecto-descripcion',
+      {
+        y: 20,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.15,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: '.proyectos-container-mejorado',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 4. Animación para los badges de tecnología
+    gsap.fromTo('.tech-badge',
+      {
+        scale: 0.6,
+        opacity: 0
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'back.out(1.7)',
+        stagger: {
+          amount: 0.6,
+          from: "start"
+        },
+        delay: 0.7,
+        scrollTrigger: {
+          trigger: '.proyectos-container-mejorado',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 5. Animación para los botones de acción
+    gsap.fromTo('.proyecto-acciones .proyecto-link',
+      {
+        y: 15,
+        opacity: 0,
+        scale: 0.9
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: 'power2.out',
+        stagger: {
+          amount: 0.3,
+          from: "start"
+        },
+        delay: 0.9,
+        scrollTrigger: {
+          trigger: '.proyectos-container-mejorado',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 6. Animación del subtítulo de proyectos
+    gsap.fromTo('.proyectos-subtitle',
+      {
+        y: 30,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.proyectos',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // 7. Efectos de hover mejorados para las tarjetas de proyecto
+    document.querySelectorAll('.proyecto-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -15,
+          scale: 1.02,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+
+        // Animar el overlay
+        const overlay = card.querySelector('.proyecto-overlay');
+        gsap.to(overlay, {
+          y: -5,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+
+        // Efecto en los badges de tecnología
+        const badges = card.querySelectorAll('.tech-badge');
+        gsap.to(badges, {
+          scale: 1.05,
+          duration: 0.2,
+          stagger: 0.05,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+
+        const overlay = card.querySelector('.proyecto-overlay');
+        gsap.to(overlay, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+
+        const badges = card.querySelectorAll('.tech-badge');
+        gsap.to(badges, {
+          scale: 1,
+          duration: 0.2,
+          stagger: 0.05,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // 8. Animación para el modal cuando se abre
+    const animateModalOpen = (modal) => {
+      gsap.fromTo(modal,
+        {
+          scale: 0.8,
+          opacity: 0,
+          y: 50
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: 'back.out(1.7)'
+        }
+      );
+
+      // Animar contenido del modal
+      const modalContent = modal.querySelector('.modal-info');
+      gsap.fromTo(modalContent.children,
+        {
+          y: 30,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.2,
+          ease: 'power2.out'
+        }
+      );
+    };
+
+    // 9. Parallax sutil para las imágenes de proyecto
+    gsap.utils.toArray('.proyecto-media').forEach(media => {
+      gsap.to(media, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: media,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    });
+
+    // 10. Efecto de revelado progresivo en scroll
+    ScrollTrigger.batch('.proyecto-card', {
+      onEnter: elements => {
+        gsap.fromTo(elements,
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.9
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out'
+          }
+        );
+      },
+      onLeave: elements => {
+        gsap.to(elements, {
+          opacity: 0.7,
+          scale: 0.98,
+          duration: 0.3
+        });
+      },
+      onEnterBack: elements => {
+        gsap.to(elements, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3
+        });
+      }
+    });
+
+    // 11. Animación de contador para badges de tecnología
+    const animateTechBadges = () => {
+      gsap.utils.toArray('.tech-badge').forEach((badge, i) => {
+        ScrollTrigger.create({
+          trigger: badge,
+          start: 'top 90%',
+          onEnter: () => {
+            gsap.fromTo(badge,
+              {
+                scale: 0,
+                rotation: -180,
+                opacity: 0
+              },
+              {
+                scale: 1,
+                rotation: 0,
+                opacity: 1,
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: 'back.out(1.7)'
+              }
+            );
+          }
+        });
+      });
+    };
+
+    // Ejecutar animación de badges
+    animateTechBadges();
+
+    // 12. Efecto magnético en botones
+    document.querySelectorAll('.proyecto-link').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(btn, {
+          x: x * 0.1,
+          y: y * 0.1,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: 'elastic.out(1, 0.5)'
+        });
+      });
+    });
+
+    // Exportar función para animar modal (usar en el componente)
+    window.animateModalOpen = animateModalOpen;
 
     // ============= TEXTO ANIMADO PROFESIONAL =============
     const multipleTextElement = document.querySelector('.multiple-text');
@@ -748,6 +1060,8 @@ function App() {
         el.removeEventListener('mouseleave', () => { });
       });
     };
+
+
 
   }, []);
 
