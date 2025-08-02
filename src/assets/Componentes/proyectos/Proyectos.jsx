@@ -27,7 +27,7 @@ const Proyectos = () => {
             id: 2,
             nombre: "ENSAM",
             categoria: "Game Development",
-            descripcion: "Videojuego desarrollado en Unity. Proyecto colaborativo que incluye diseño de niveles, programación de mecánicas de juego, sistema de puntuación y efectos visuales.",
+            descripcion: "Videojuego desarrollado en Unity. Proyecto colaborativo que incluye diseño de niveles, programación de mecánicas de juego, sistema de puntuación y efectos visualares.",
             tecnologias: ["Unity", "C#", "Game Design", "2D/3D Graphics", "Audio Integration"],
             videoUrl: "/videos/ENSAM.mp4",
             imagenFallback: "/Imagenes/ENSAM.png",
@@ -123,7 +123,6 @@ const Proyectos = () => {
             if (play) {
                 video.currentTime = 0;
                 video.play().catch(() => {
-                    // Si el video no se puede reproducir, mostrar imagen
                     console.log('Video no disponible, mostrando imagen fallback');
                 });
             } else {
@@ -133,55 +132,47 @@ const Proyectos = () => {
         }
     };
 
-    // Manejar click en proyecto
-    const handleProyectoClick = (proyecto) => {
+    // Manejar click en proyecto - SIMPLIFICADO
+    const handleProyectoClick = (proyecto, event) => {
+        // Prevenir propagación si viene de un enlace
+        if (event && event.target.closest('a')) {
+            return;
+        }
+        
+        console.log('Abriendo modal para:', proyecto.nombre); // Debug
         setProyectoActivo(proyecto);
     };
 
-    const cerrarModal = () => {
+    const cerrarModal = (event) => {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        console.log('Cerrando modal'); // Debug
         setProyectoActivo(null);
     };
 
-    // Efecto para manejar scroll del body y cursor cuando se abre el modal
+    // Manejar tecla ESC para cerrar modal
     useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape' && proyectoActivo) {
+                cerrarModal();
+            }
+        };
+
         if (proyectoActivo) {
-            // Deshabilitar scroll del body
+            document.addEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'hidden';
             
-            // Ocultar cursor personalizado
-            const customCursor = document.querySelector('.custom-cursor');
-            if (customCursor) {
-                customCursor.style.display = 'none';
-            }
-            
-            // Agregar clase al body para restaurar cursor nativo
-            document.body.style.cursor = 'auto';
-            document.body.classList.add('modal-open');
+            // Debug
+            console.log('Modal abierto para:', proyectoActivo.nombre);
         } else {
-            // Rehabilitar scroll del body
             document.body.style.overflow = 'unset';
-            
-            // Mostrar cursor personalizado nuevamente
-            const customCursor = document.querySelector('.custom-cursor');
-            if (customCursor) {
-                customCursor.style.display = 'block';
-            }
-            
-            // Remover cursor nativo y clase
-            document.body.style.cursor = 'none';
-            document.body.classList.remove('modal-open');
         }
 
-        // Limpiar al desmontar el componente
         return () => {
+            document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'unset';
-            document.body.style.cursor = 'none';
-            document.body.classList.remove('modal-open');
-            
-            const customCursor = document.querySelector('.custom-cursor');
-            if (customCursor) {
-                customCursor.style.display = 'block';
-            }
         };
     }, [proyectoActivo]);
 
@@ -199,7 +190,8 @@ const Proyectos = () => {
                         className="proyecto-card"
                         onMouseEnter={() => handleVideoHover(proyecto.id, true)}
                         onMouseLeave={() => handleVideoHover(proyecto.id, false)}
-                        onClick={() => handleProyectoClick(proyecto)}
+                        onClick={(e) => handleProyectoClick(proyecto, e)}
+                        style={{ cursor: 'pointer' }} // Asegurar que se vea clickeable
                     >
                         <div className="proyecto-media">
                             <video
@@ -217,10 +209,9 @@ const Proyectos = () => {
                                 alt={proyecto.nombre}
                                 className="proyecto-imagen-fallback"
                                 onError={(e) => {
-                                    e.target.src = "/Imagenes/github.png"; // Imagen por defecto
+                                    e.target.src = "/Imagenes/github.png";
                                 }}
                             />
-                            {/* Overlay fijo - SIN parallax que cause problemas */}
                             <div className="proyecto-overlay-fixed">
                                 <div className="proyecto-categoria">{proyecto.categoria}</div>
                                 <div className="proyecto-año">{proyecto.año}</div>
@@ -294,16 +285,67 @@ const Proyectos = () => {
                 ))}
             </div>
 
-            {/* Modal de detalles del proyecto */}
+            {/* Modal de detalles del proyecto - MEJORADO */}
             {proyectoActivo && (
-                <div className="proyecto-modal-overlay" onClick={cerrarModal}>
-                    <div className="proyecto-modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={cerrarModal}>
+                <div 
+                    className="proyecto-modal-overlay" 
+                    onClick={cerrarModal}
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: 10000,
+                        padding: '2rem',
+                        backdropFilter: 'blur(10px)'
+                    }}
+                >
+                    <div 
+                        className="proyecto-modal" 
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            backgroundColor: 'var(--card-bg-color)',
+                            borderRadius: '20px',
+                            maxWidth: '900px',
+                            width: '100%',
+                            maxHeight: '90vh',
+                            overflowY: 'auto',
+                            position: 'relative',
+                            border: '1px solid var(--border-color)',
+                            animation: 'modalSlideIn 0.3s ease-out'
+                        }}
+                    >
+                        <button 
+                            className="modal-close" 
+                            onClick={cerrarModal}
+                            style={{
+                                position: 'absolute',
+                                top: '1rem',
+                                right: '1rem',
+                                width: '40px',
+                                height: '40px',
+                                border: 'none',
+                                background: 'rgba(255, 107, 53, 0.2)',
+                                color: 'var(--main-color)',
+                                borderRadius: '50%',
+                                cursor: 'pointer',
+                                zIndex: 10,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '2rem'
+                            }}
+                        >
                             <i className='bx bx-x'></i>
                         </button>
 
                         <div className="modal-content">
-                            <div className="modal-media">
+                            <div className="modal-media" style={{ height: '300px', overflow: 'hidden', background: '#000' }}>
                                 <video
                                     className="modal-video"
                                     controls
@@ -311,52 +353,167 @@ const Proyectos = () => {
                                     muted
                                     loop
                                     poster={proyectoActivo.imagenFallback}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 >
                                     <source src={proyectoActivo.videoUrl} type="video/mp4" />
                                 </video>
                             </div>
 
-                            <div className="modal-info">
-                                <div className="modal-header">
-                                    <h2>{proyectoActivo.nombre}</h2>
-                                    <span className="modal-categoria">{proyectoActivo.categoria}</span>
+                            <div className="modal-info" style={{ padding: '3rem' }}>
+                                <div className="modal-header" style={{ marginBottom: '2rem' }}>
+                                    <h2 style={{ fontSize: '2.8rem', color: 'var(--text-color)', marginBottom: '1rem' }}>
+                                        {proyectoActivo.nombre}
+                                    </h2>
+                                    <span 
+                                        className="modal-categoria"
+                                        style={{
+                                            background: 'var(--gradient-primary)',
+                                            color: 'white',
+                                            padding: '0.5rem 1.5rem',
+                                            borderRadius: '20px',
+                                            fontSize: '1.3rem',
+                                            fontWeight: '600'
+                                        }}
+                                    >
+                                        {proyectoActivo.categoria}
+                                    </span>
                                 </div>
 
-                                <p className="modal-descripcion">{proyectoActivo.descripcion}</p>
+                                <p 
+                                    className="modal-descripcion"
+                                    style={{
+                                        fontSize: '1.6rem',
+                                        color: 'var(--text-secondary)',
+                                        lineHeight: '1.7',
+                                        marginBottom: '3rem'
+                                    }}
+                                >
+                                    {proyectoActivo.descripcion}
+                                </p>
 
-                                <div className="modal-tecnologias">
-                                    <h4>Tecnologías utilizadas:</h4>
-                                    <div className="modal-tech-grid">
+                                <div className="modal-tecnologias" style={{ marginBottom: '3rem' }}>
+                                    <h4 style={{ color: 'var(--text-color)', fontSize: '1.8rem', marginBottom: '1.5rem' }}>
+                                        Tecnologías utilizadas:
+                                    </h4>
+                                    <div 
+                                        className="modal-tech-grid"
+                                        style={{
+                                            display: 'grid',
+                                            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+                                            gap: '1rem'
+                                        }}
+                                    >
                                         {proyectoActivo.tecnologias.map((tech, index) => (
-                                            <span key={index} className="modal-tech-badge">{tech}</span>
+                                            <span 
+                                                key={index} 
+                                                className="modal-tech-badge"
+                                                style={{
+                                                    background: 'rgba(255, 107, 53, 0.1)',
+                                                    color: 'var(--main-color)',
+                                                    padding: '0.8rem 1.2rem',
+                                                    borderRadius: '10px',
+                                                    fontSize: '1.3rem',
+                                                    fontWeight: '600',
+                                                    textAlign: 'center',
+                                                    border: '1px solid rgba(255, 107, 53, 0.2)'
+                                                }}
+                                            >
+                                                {tech}
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="modal-meta">
-                                    <div className="meta-item">
-                                        <strong>Duración:</strong> {proyectoActivo.duracion}
+                                <div 
+                                    className="modal-meta"
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                        gap: '2rem',
+                                        marginBottom: '3rem',
+                                        padding: '2rem',
+                                        background: 'rgba(255, 107, 53, 0.05)',
+                                        borderRadius: '15px',
+                                        border: '1px solid rgba(255, 107, 53, 0.1)'
+                                    }}
+                                >
+                                    <div className="meta-item" style={{ fontSize: '1.5rem', color: 'var(--text-secondary)' }}>
+                                        <strong style={{ color: 'var(--text-color)' }}>Duración:</strong> {proyectoActivo.duracion}
                                     </div>
-                                    <div className="meta-item">
-                                        <strong>Año:</strong> {proyectoActivo.año}
+                                    <div className="meta-item" style={{ fontSize: '1.5rem', color: 'var(--text-secondary)' }}>
+                                        <strong style={{ color: 'var(--text-color)' }}>Año:</strong> {proyectoActivo.año}
                                     </div>
                                 </div>
 
-                                {/* Sección de colaboradores CORREGIDA */}
                                 {proyectoActivo.colaboradores && proyectoActivo.colaboradores.length > 0 && (
-                                    <div className="modal-colaboradores">
-                                        <h4>Colaboradores:</h4>
-                                        <div className="colaboradores-grid">
+                                    <div 
+                                        className="modal-colaboradores"
+                                        style={{
+                                            margin: '3rem 0',
+                                            padding: '2rem',
+                                            background: 'rgba(255, 107, 53, 0.05)',
+                                            borderRadius: '15px',
+                                            border: '1px solid rgba(255, 107, 53, 0.1)'
+                                        }}
+                                    >
+                                        <h4 style={{
+                                            color: 'var(--text-color)',
+                                            fontSize: '1.8rem',
+                                            marginBottom: '1.5rem',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+                                            <i className='bx bx-group' style={{ color: 'var(--main-color)', fontSize: '2rem' }}></i>
+                                            Colaboradores:
+                                        </h4>
+                                        <div 
+                                            className="colaboradores-grid"
+                                            style={{
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                                                gap: '1.5rem'
+                                            }}
+                                        >
                                             {proyectoActivo.colaboradores.map((colaborador, index) => (
-                                                <div key={index} className="colaborador-card">
-                                                    <h5>{colaborador.nombre}</h5>
-                                                    <div className="colaborador-links">
+                                                <div 
+                                                    key={index} 
+                                                    className="colaborador-card"
+                                                    style={{
+                                                        background: 'var(--card-bg-color)',
+                                                        padding: '1.5rem',
+                                                        borderRadius: '12px',
+                                                        border: '1px solid var(--border-color)'
+                                                    }}
+                                                >
+                                                    <h5 style={{
+                                                        color: 'var(--text-color)',
+                                                        fontSize: '1.6rem',
+                                                        fontWeight: '600',
+                                                        marginBottom: '1rem',
+                                                        lineHeight: '1.3'
+                                                    }}>
+                                                        {colaborador.nombre}
+                                                    </h5>
+                                                    <div className="colaborador-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                                         {colaborador.linkedin && (
                                                             <a
                                                                 href={colaborador.linkedin}
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
                                                                 className="colaborador-link linkedin"
+                                                                style={{
+                                                                    display: 'inline-flex',
+                                                                    alignItems: 'center',
+                                                                    gap: '0.5rem',
+                                                                    padding: '0.6rem 1.2rem',
+                                                                    borderRadius: '8px',
+                                                                    fontSize: '1.2rem',
+                                                                    fontWeight: '500',
+                                                                    textDecoration: 'none',
+                                                                    background: '#0077b5',
+                                                                    color: 'white'
+                                                                }}
                                                             >
                                                                 <i className='bx bxl-linkedin'></i>
                                                                 LinkedIn
@@ -368,6 +525,18 @@ const Proyectos = () => {
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
                                                                 className="colaborador-link portfolio"
+                                                                style={{
+                                                                    display: 'inline-flex',
+                                                                    alignItems: 'center',
+                                                                    gap: '0.5rem',
+                                                                    padding: '0.6rem 1.2rem',
+                                                                    borderRadius: '8px',
+                                                                    fontSize: '1.2rem',
+                                                                    fontWeight: '500',
+                                                                    textDecoration: 'none',
+                                                                    background: 'var(--gradient-primary)',
+                                                                    color: 'white'
+                                                                }}
                                                             >
                                                                 <i className='bx bx-link-external'></i>
                                                                 Portfolio
@@ -380,13 +549,25 @@ const Proyectos = () => {
                                     </div>
                                 )}
 
-                                <div className="modal-acciones">
+                                <div className="modal-acciones" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
                                     {proyectoActivo.githubUrl && (
                                         <a
                                             href={proyectoActivo.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="modal-btn github-btn"
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '0.8rem',
+                                                padding: '1.2rem 2rem',
+                                                borderRadius: '10px',
+                                                fontSize: '1.4rem',
+                                                fontWeight: '600',
+                                                textDecoration: 'none',
+                                                background: '#333',
+                                                color: 'white'
+                                            }}
                                         >
                                             <i className='bx bxl-github'></i>
                                             Ver en GitHub
@@ -398,6 +579,18 @@ const Proyectos = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="modal-btn demo-btn"
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '0.8rem',
+                                                padding: '1.2rem 2rem',
+                                                borderRadius: '10px',
+                                                fontSize: '1.4rem',
+                                                fontWeight: '600',
+                                                textDecoration: 'none',
+                                                background: 'var(--gradient-primary)',
+                                                color: 'white'
+                                            }}
                                         >
                                             <i className='bx bx-link-external'></i>
                                             Ver Demo
