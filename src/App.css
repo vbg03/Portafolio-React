@@ -50,7 +50,8 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden;
-    /* Prevenir scroll horizontal */
+    padding-top: 0;
+    /* GSAP manejará el espaciado */
     background-image:
         radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.02) 0%, transparent 50%);
@@ -62,9 +63,8 @@ section {
     background: var(--bg-color);
     position: relative;
     padding: 10rem 9% 2rem;
-    /* Padding consistente */
+    /* Mantener padding superior para el header */
     overflow-x: hidden;
-    /* Prevenir desbordamiento */
 }
 
 section:nth-child(even) {
@@ -86,19 +86,26 @@ section::before {
 
 /* ========== HEADER ========== */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: fixed !important;
+    /* Forzar posición fija */
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     padding: 2rem 9%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 100 !important;
+    /* Asegurar que esté por encima */
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) !important;
+    /* Evitar cualquier transformación no deseada */
+    transition: none;
+    /* Eliminar transitions CSS que puedan interferir con GSAP */
 }
 
 .logo {
@@ -155,7 +162,8 @@ section::before {
     align-items: center;
     gap: 2rem;
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 12rem 9% 2rem;
+    /* Padding extra para la primera sección */
 }
 
 .inicio-content {
@@ -1381,6 +1389,27 @@ span {
     }
 }
 
+/* Media queries para mantener el header responsivo */
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 3% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem 3% !important;
+    }
+
+    .inicio {
+        padding: 12rem 3% 2rem;
+    }
+
+    section {
+        padding: 10rem 3% 2rem;
+    }
+}
+
 @media (max-width: 450px) {
     .proyecto-overlay {
         flex-direction: column;
@@ -1516,7 +1545,7 @@ span {
 }
 
 
-/* ========== CORRECCIONES PARA OVERLAY FIJO ========== */
+/* ========== OVERLAY FIJO ========== */
 .proyecto-overlay-fixed {
     position: absolute;
     top: 1rem;
@@ -1526,18 +1555,14 @@ span {
     justify-content: space-between;
     align-items: flex-start;
     z-index: 3;
-    /* Eliminamos cualquier transformación que pueda causar problemas */
     transform: none !important;
     will-change: auto;
 }
 
-/* Reemplazar la clase anterior .proyecto-overlay */
 .proyecto-overlay {
     display: none;
-    /* Ocultar la clase anterior */
 }
 
-/* ========== COLABORADORES EN TARJETAS ========== */
 .proyecto-colaboradores {
     display: flex;
     align-items: center;
@@ -1551,7 +1576,6 @@ span {
     color: var(--main-color);
 }
 
-/* ========== MODAL - SECCIÓN DE COLABORADORES ========== */
 .modal-colaboradores {
     margin: 3rem 0;
     padding: 2rem;
@@ -1571,7 +1595,6 @@ span {
 
 .modal-colaboradores h4::before {
     content: '\ed51';
-    /* Icono de grupo de Boxicons */
     font-family: 'boxicons';
     color: var(--main-color);
     font-size: 2rem;
@@ -1645,63 +1668,34 @@ span {
     box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
 
-/* ========== CURSOR PERSONALIZADO - CORRECCIONES ========== */
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: var(--main-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transition: all 0.15s ease;
-    transform: translate(-50%, -50%);
-}
-
-.custom-cursor.clicking {
-    transform: translate(-50%, -50%) scale(1.5);
-    background: var(--accent-color);
-}
-
-.custom-cursor.hovering {
-    transform: translate(-50%, -50%) scale(2);
-    background: rgba(255, 107, 53, 0.6);
-}
-
-/* Asegurar que el cursor se muestre correctamente en el modal */
-.proyecto-modal-overlay .custom-cursor {
-    z-index: 10001 !important;
-}
-
-/* ========== NAVEGACIÓN - CORRECCIONES PARA CURSOR ========== */
-.navbar a {
-    position: relative;
-    cursor: none;
-    /* Ocultar cursor nativo en navegación */
-}
-
-.navbar a:hover {
-    cursor: none;
-}
-
-/* ========== CORRECCIONES PARA PARALLAX EN MEDIA ========== */
 .proyecto-media {
     position: relative;
     height: 250px;
     overflow: hidden;
     background: #000;
-    /* Eliminar cualquier transformación que pueda causar problemas */
     transform: none !important;
     will-change: auto;
 }
 
-/* Deshabilitar el parallax problemático */
 .proyecto-media * {
     will-change: auto !important;
 }
 
-/* ========== MODAL - PREVENIR SCROLL ISSUES ========== */
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-secondary);
+    margin-left: 4rem;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer !important;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    cursor: pointer;
+}
+
 .proyecto-modal-overlay {
     position: fixed;
     top: 0;
@@ -1715,8 +1709,7 @@ span {
     z-index: 10000;
     padding: 2rem;
     backdrop-filter: blur(10px);
-    /* Asegurar que el cursor funcione */
-    cursor: none;
+    cursor: default !important;
 }
 
 .proyecto-modal {
@@ -1729,8 +1722,7 @@ span {
     position: relative;
     border: 1px solid var(--border-color);
     animation: modalSlideIn 0.3s ease-out;
-    /* Asegurar que el cursor funcione */
-    cursor: auto;
+    cursor: default;
 }
 
 /* ========== RESPONSIVE PARA COLABORADORES ========== */
@@ -1939,4 +1931,10 @@ span {
     .footer p {
         text-align: center;
     }
+}
+
+@media (max-width: 991px) {
+  * {
+    cursor: auto !important;
+  }
 }
