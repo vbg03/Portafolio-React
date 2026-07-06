@@ -330,7 +330,7 @@ const Proyectos = () => {
                                 width: '40px',
                                 height: '40px',
                                 border: 'none',
-                                background: 'rgba(255, 107, 53, 0.2)',
+                                background: 'rgba(168, 85, 247, 0.18)',
                                 color: 'var(--main-color)',
                                 borderRadius: '50%',
                                 cursor: 'pointer',
@@ -408,14 +408,14 @@ const Proyectos = () => {
                                                 key={index} 
                                                 className="modal-tech-badge"
                                                 style={{
-                                                    background: 'rgba(255, 107, 53, 0.1)',
+                                                    background: 'rgba(168, 85, 247, 0.12)',
                                                     color: 'var(--main-color)',
                                                     padding: '0.8rem 1.2rem',
                                                     borderRadius: '10px',
                                                     fontSize: '1.3rem',
                                                     fontWeight: '600',
                                                     textAlign: 'center',
-                                                    border: '1px solid rgba(255, 107, 53, 0.2)'
+                                                    border: '1px solid rgba(168, 85, 247, 0.24)'
                                                 }}
                                             >
                                                 {tech}
@@ -432,9 +432,9 @@ const Proyectos = () => {
                                         gap: '2rem',
                                         marginBottom: '3rem',
                                         padding: '2rem',
-                                        background: 'rgba(255, 107, 53, 0.05)',
+                                        background: 'rgba(168, 85, 247, 0.08)',
                                         borderRadius: '15px',
-                                        border: '1px solid rgba(255, 107, 53, 0.1)'
+                                        border: '1px solid rgba(168, 85, 247, 0.16)'
                                     }}
                                 >
                                     <div className="meta-item" style={{ fontSize: '1.5rem', color: 'var(--text-secondary)' }}>
@@ -451,9 +451,9 @@ const Proyectos = () => {
                                         style={{
                                             margin: '3rem 0',
                                             padding: '2rem',
-                                            background: 'rgba(255, 107, 53, 0.05)',
+                                            background: 'rgba(168, 85, 247, 0.08)',
                                             borderRadius: '15px',
-                                            border: '1px solid rgba(255, 107, 53, 0.1)'
+                                            border: '1px solid rgba(168, 85, 247, 0.16)'
                                         }}
                                     >
                                         <h4 style={{

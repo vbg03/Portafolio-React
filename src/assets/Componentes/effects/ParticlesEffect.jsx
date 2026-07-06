@@ -40,7 +40,7 @@ const ParticlesEffect = () => {
         position: absolute;
         width: ${size}px;
         height: ${size}px;
-        background: #ff6b35;
+        background: #a855f7;
         border-radius: 50%;
         left: ${startX}px;
         top: 100vh;
@@ -50,7 +50,7 @@ const ParticlesEffect = () => {
       
       // Agregar brillo ocasional
       if (Math.random() > 0.7) {
-        particle.style.boxShadow = `0 0 ${size * 2}px rgba(255, 107, 53, 0.5)`;
+        particle.style.boxShadow = `0 0 ${size * 2}px rgba(168, 85, 247, 0.5)`;
       }
       
       particlesRef.current.appendChild(particle);

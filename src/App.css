@@ -12,33 +12,33 @@
 }
 
 :root {
-    /* Colores principales - Tema oscuro profesional */
-    --bg-color: #0a0a0a;
-    --second-bg-color: #1a1a1a;
-    --card-bg-color: #252525;
-    --text-color: #ffffff;
-    --text-secondary: #b0b0b0;
+    /* Colores principales - Tema violeta oscuro */
+    --bg-color: #0b0613;
+    --second-bg-color: #150f22;
+    --card-bg-color: #21172f;
+    --text-color: #f8f2ff;
+    --text-secondary: #c8b8dc;
 
-    /* Acentos naranjas */
-    --main-color: #ff6b35;
-    --accent-color: #ff8c42;
-    --bright-orange: #ff5722;
-    --dark-orange: #e55100;
+    /* Acentos violetas */
+    --main-color: #a855f7;
+    --accent-color: #d946ef;
+    --bright-violet: #c084fc;
+    --dark-violet: #6d28d9;
 
     /* Gradientes profesionales */
-    --gradient-primary: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 140, 66, 0.1) 100%);
+    --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #a855f7 48%, #d946ef 100%);
+    --gradient-dark: linear-gradient(135deg, #150f22 0%, #21172f 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(217, 70, 239, 0.1) 100%);
 
     /* Efectos y sombras */
-    --shadow-light: 0 4px 6px rgba(255, 107, 53, 0.1);
-    --shadow-medium: 0 8px 25px rgba(255, 107, 53, 0.15);
-    --shadow-heavy: 0 15px 35px rgba(255, 107, 53, 0.2);
-    --glow-orange: 0 0 20px rgba(255, 107, 53, 0.3);
+    --shadow-light: 0 4px 6px rgba(168, 85, 247, 0.1);
+    --shadow-medium: 0 8px 25px rgba(168, 85, 247, 0.18);
+    --shadow-heavy: 0 15px 35px rgba(217, 70, 239, 0.22);
+    --glow-violet: 0 0 22px rgba(168, 85, 247, 0.35);
 
     /* Borders */
-    --border-color: #333333;
-    --border-accent: rgba(255, 107, 53, 0.3);
+    --border-color: #352447;
+    --border-accent: rgba(168, 85, 247, 0.35);
 }
 
 html {
@@ -53,8 +53,8 @@ body {
     padding-top: 0;
     /* GSAP manejará el espaciado */
     background-image:
-        radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(217, 70, 239, 0.06) 0%, transparent 50%);
 }
 
 section {
@@ -79,8 +79,8 @@ section::before {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 140, 66, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -98,7 +98,7 @@ section::before {
     align-items: center;
     z-index: 100 !important;
     /* Asegurar que esté por encima */
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(11, 6, 19, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -116,7 +116,7 @@ section::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+    text-shadow: 0 0 30px rgba(255, 53, 205, 0.5);
 }
 
 .navbar a {
@@ -141,7 +141,7 @@ section::before {
 .navbar a:hover,
 .navbar a.active {
     color: var(--main-color);
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    text-shadow: 0 0 10px rgba(255, 53, 181, 0.3);
 }
 
 .navbar a:hover::after,
@@ -188,7 +188,7 @@ section::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.2));
+    filter: drop-shadow(0 0 10px rgba(255, 53, 215, 0.2));
     word-wrap: break-word;
     /* Permitir salto de línea */
 }
@@ -203,7 +203,7 @@ section::before {
 
 span {
     color: var(--main-color);
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    text-shadow: 0 0 10px rgba(255, 53, 248, 0.3);
 }
 
 .inicio-img {
@@ -219,29 +219,29 @@ span {
     max-width: 350px;
     height: auto;
     animation: floatImage 4s ease-in-out infinite;
-    filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
+    filter: drop-shadow(0 10px 30px rgba(252, 53, 255, 0.2));
     transition: all 0.3s ease;
 }
 
 .inicio-img img:hover {
-    filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
+    filter: drop-shadow(0 20px 40px rgba(231, 53, 255, 0.3));
     transform: scale(1.02);
 }
 
 @keyframes floatImage {
     0% {
         transform: translateY(0) scale(1);
-        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
+        filter: drop-shadow(0 10px 20px rgba(255, 53, 225, 0.1));
     }
 
     50% {
         transform: translateY(-2.4rem) scale(1.02);
-        filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.2));
+        filter: drop-shadow(0 20px 40px rgba(255, 53, 228, 0.2));
     }
 
     100% {
         transform: translateY(0) scale(1);
-        filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.1));
+        filter: drop-shadow(0 10px 20px rgba(255, 53, 242, 0.1));
     }
 }
 
@@ -271,7 +271,7 @@ span {
     color: var(--bg-color);
     border-color: var(--main-color);
     transform: translateY(-3px) scale(1.1);
-    box-shadow: var(--glow-orange);
+    box-shadow: var(--glow-violet);
 }
 
 /* ========== SOBRE MÍ ========== */
@@ -295,12 +295,12 @@ span {
     width: 100%;
     max-width: 350px;
     height: auto;
-    filter: drop-shadow(0 10px 30px rgba(255, 107, 53, 0.2));
+    filter: drop-shadow(0 10px 30px rgba(255, 53, 252, 0.2));
     transition: all 0.3s ease;
 }
 
 .sobre-img img:hover {
-    filter: drop-shadow(0 20px 40px rgba(255, 107, 53, 0.3));
+    filter: drop-shadow(0 20px 40px rgba(245, 53, 255, 0.3));
     transform: scale(1.02);
 }
 
@@ -365,7 +365,7 @@ span {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-heavy), var(--glow-orange);
+    box-shadow: var(--shadow-heavy), var(--glow-violet);
 }
 
 .btn:hover::before {
@@ -412,7 +412,7 @@ span {
 .section-title i {
     font-size: 3.5rem;
     color: var(--main-color);
-    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
+    filter: drop-shadow(0 0 10px rgba(235, 53, 255, 0.3));
 }
 
 /* ========== HABILIDADES TÉCNICAS ========== */
@@ -458,8 +458,8 @@ span {
 .habilidad-card:hover {
     transform: translateY(-8px);
     border-color: var(--main-color);
-    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
-    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(255, 107, 53, 0.03) 100%);
+    box-shadow: 0 20px 40px rgba(255, 53, 242, 0.1);
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(238, 53, 255, 0.03) 100%);
 }
 
 .habilidad-card:hover::before {
@@ -470,13 +470,13 @@ span {
     flex-shrink: 0;
     width: 80px;
     height: 80px;
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(252, 53, 255, 0.1);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.4s ease;
-    border: 2px solid rgba(255, 107, 53, 0.2);
+    border: 2px solid rgba(255, 53, 248, 0.2);
 }
 
 .habilidad-icon i {
@@ -485,14 +485,14 @@ span {
 }
 
 .habilidad-card:hover .habilidad-icon {
-    background: rgba(255, 107, 53, 0.15);
-    border-color: rgba(255, 107, 53, 0.4);
+    background: rgba(225, 53, 255, 0.15);
+    border-color: rgba(238, 53, 255, 0.4);
     transform: scale(1.1) rotate(5deg);
 }
 
 .habilidad-card:hover .habilidad-icon i {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.5));
+    filter: drop-shadow(0 0 15px rgba(228, 53, 255, 0.5));
 }
 
 .habilidad-content {
@@ -515,13 +515,13 @@ span {
 }
 
 .tech-tag {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(228, 53, 255, 0.1);
     color: var(--main-color);
     padding: 0.5rem 1.2rem;
     border-radius: 25px;
     font-size: 1.3rem;
     font-weight: 500;
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    border: 1px solid rgba(231, 53, 255, 0.2);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -542,7 +542,7 @@ span {
     background: var(--main-color);
     color: white;
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 5px 15px rgba(218, 53, 255, 0.3);
 }
 
 .tech-tag:hover::before {
@@ -592,8 +592,8 @@ span {
 .habilidad-blanda:hover {
     transform: translateY(-5px);
     border-color: var(--main-color);
-    box-shadow: 0 15px 30px rgba(255, 107, 53, 0.1);
-    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(255, 107, 53, 0.02) 100%);
+    box-shadow: 0 15px 30px rgba(252, 53, 255, 0.1);
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(168, 85, 247, 0.04) 100%);
 }
 
 .habilidad-blanda:hover::before {
@@ -604,7 +604,7 @@ span {
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(211, 53, 255, 0.1);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -619,13 +619,13 @@ span {
 }
 
 .habilidad-blanda:hover .habilidad-blanda-icon {
-    background: rgba(255, 107, 53, 0.15);
+    background: rgba(201, 53, 255, 0.15);
     transform: scale(1.1);
 }
 
 .habilidad-blanda:hover .habilidad-blanda-icon i {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.4));
+    filter: drop-shadow(0 0 10px rgba(205, 53, 255, 0.4));
 }
 
 .habilidad-blanda-content h4 {
@@ -902,7 +902,7 @@ span {
 .proyecto-card:hover {
     transform: translateY(-10px);
     border-color: var(--main-color);
-    box-shadow: 0 25px 50px rgba(255, 107, 53, 0.15);
+    box-shadow: 0 25px 50px rgba(228, 53, 255, 0.15);
 }
 
 .proyecto-card:hover::before {
@@ -956,7 +956,7 @@ span {
 }
 
 .proyecto-categoria {
-    background: rgba(255, 107, 53, 0.9);
+    background: rgba(211, 53, 255, 0.9);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -1008,29 +1008,29 @@ span {
 }
 
 .tech-badge {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(215, 53, 255, 0.1);
     color: var(--main-color);
     padding: 0.4rem 1rem;
     border-radius: 15px;
     font-size: 1.2rem;
     font-weight: 500;
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     transition: all 0.3s ease;
 }
 
 .tech-badge:hover {
-    background: rgba(255, 107, 53, 0.2);
+    background: rgba(168, 85, 247, 0.18);
     transform: translateY(-2px);
 }
 
 .tech-badge-more {
-    background: rgba(255, 107, 53, 0.2);
+    background: rgba(168, 85, 247, 0.18);
     color: var(--main-color);
     padding: 0.4rem 1rem;
     border-radius: 15px;
     font-size: 1.2rem;
     font-weight: 600;
-    border: 1px solid rgba(255, 107, 53, 0.3);
+    border: 1px solid rgba(168, 85, 247, 0.32);
 }
 
 /* ========== ACCIONES DEL PROYECTO ========== */
@@ -1075,7 +1075,7 @@ span {
 
 .demo-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 5px 15px rgba(171, 53, 255, 0.4);
 }
 
 .details-link {
@@ -1158,7 +1158,7 @@ span {
     width: 40px;
     height: 40px;
     border: none;
-    background: rgba(255, 107, 53, 0.2);
+    background: rgba(168, 85, 247, 0.18);
     color: var(--main-color);
     border-radius: 50%;
     cursor: pointer;
@@ -1236,14 +1236,14 @@ span {
 }
 
 .modal-tech-badge {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(168, 85, 247, 0.12);
     color: var(--main-color);
     padding: 0.8rem 1.2rem;
     border-radius: 10px;
     font-size: 1.3rem;
     font-weight: 600;
     text-align: center;
-    border: 1px solid rgba(255, 107, 53, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.24);
 }
 
 .modal-meta {
@@ -1252,9 +1252,9 @@ span {
     gap: 2rem;
     margin-bottom: 3rem;
     padding: 2rem;
-    background: rgba(255, 107, 53, 0.05);
+    background: rgba(168, 85, 247, 0.08);
     border-radius: 15px;
-    border: 1px solid rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.16);
 }
 
 .meta-item {
@@ -1302,7 +1302,7 @@ span {
 
 .demo-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 8px 25px rgba(50, 7, 78, 0.359);
 }
 
 /* ========== RESPONSIVE ========== */
@@ -1513,7 +1513,7 @@ span {
 
 .footer-iconTop a:hover {
     transform: translateY(-3px) scale(1.1);
-    box-shadow: var(--glow-orange);
+    box-shadow: var(--glow-violet);
 }
 
 .footer-iconTop a i {
@@ -1536,11 +1536,11 @@ span {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--bright-orange);
+    background: var(--bright-violet);
 }
 
 ::selection {
-    background: rgba(255, 107, 53, 0.3);
+    background: rgba(215, 53, 255, 0.3);
     color: white;
 }
 
@@ -1579,9 +1579,9 @@ span {
 .modal-colaboradores {
     margin: 3rem 0;
     padding: 2rem;
-    background: rgba(255, 107, 53, 0.05);
+    background: rgba(164, 53, 255, 0.05);
     border-radius: 15px;
-    border: 1px solid rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(235, 53, 255, 0.1);
 }
 
 .modal-colaboradores h4 {
@@ -1616,7 +1616,7 @@ span {
 
 .colaborador-card:hover {
     border-color: var(--main-color);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.1);
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.16);
     transform: translateY(-2px);
 }
 
@@ -1665,7 +1665,7 @@ span {
 
 .colaborador-link.portfolio:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
 }
 
 .proyecto-media {
@@ -1692,7 +1692,7 @@ span {
 
 .navbar a:hover {
     color: var(--main-color);
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    text-shadow: 0 0 10px rgba(228, 53, 255, 0.3);
     cursor: pointer;
 }
 
@@ -1735,7 +1735,7 @@ section:not(:last-child)::after {
     height: 3px;
     background: var(--gradient-primary);
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
 }
 
 /* ========== RESPONSIVE PARA COLABORADORES ========== */
@@ -1844,7 +1844,7 @@ section:not(:last-child)::after {
         border-top: 1px solid var(--border-color);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
         display: none;
-        background: rgba(10, 10, 10, 0.98);
+        background: rgba(11, 6, 19, 0.98);
         backdrop-filter: blur(10px);
     }
 
@@ -1865,7 +1865,7 @@ section:not(:last-child)::after {
     .navbar a:hover,
     .navbar a.active {
         color: var(--main-color);
-        background: rgba(255, 107, 53, 0.1);
+        background: rgba(168, 85, 247, 0.12);
         padding-left: 1rem;
         border-radius: 0.5rem;
     }

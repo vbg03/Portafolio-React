@@ -38,9 +38,9 @@ const InteractiveBackground = () => {
       
       // Gradiente base
       const gradient = ctx.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, '#0a0a0a');
-      gradient.addColorStop(0.5, '#1a1a1a');
-      gradient.addColorStop(1, '#0a0a0a');
+      gradient.addColorStop(0, '#0b0613');
+      gradient.addColorStop(0.5, '#150f22');
+      gradient.addColorStop(1, '#0b0613');
       
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -53,7 +53,7 @@ const InteractiveBackground = () => {
         const waveY = height * 0.5 + Math.sin(time + i * 2) * 50;
         const waveGradient = ctx.createLinearGradient(0, waveY - 25, 0, waveY + 25);
         waveGradient.addColorStop(0, 'transparent');
-        waveGradient.addColorStop(0.5, `hsl(${15 + i * 10}, 100%, 50%)`);
+        waveGradient.addColorStop(0.5, `hsl(${270 + i * 12}, 88%, 62%)`);
         waveGradient.addColorStop(1, 'transparent');
         
         ctx.fillStyle = waveGradient;

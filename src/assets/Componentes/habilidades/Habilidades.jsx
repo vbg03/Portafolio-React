@@ -8,7 +8,7 @@ const Habilidades = () => {
             icono: "bx-code-alt",
             tecnologias: ["HTML", "CSS", "JavaScript", "React", "Vite", "TailwindCSS", "GSAP"],
             descripcion: "Desarrollo de aplicaciones web modernas con diseño responsivo y animaciones fluidas. Experiencia en consumo de APIs REST, arquitectura por capas en Node.js e integración de microservicios.",
-            color: "#ff6b35"
+            color: "#a855f7"
         },
         {
             id: 2,
@@ -16,7 +16,7 @@ const Habilidades = () => {
             icono: "bx-palette",
             tecnologias: ["Figma", "Adobe XD", "Photoshop", "Illustrator"],
             descripcion: "Diseño de interfaces centradas en el usuario, prototipado interactivo y branding. Especializada en experiencias inmersivas y gamificadas con enfoque en usabilidad.",
-            color: "#ff8c42"
+            color: "#c084fc"
         },
         {
             id: 3,
@@ -24,7 +24,7 @@ const Habilidades = () => {
             icono: "bx-video",
             tecnologias: ["Adobe Premiere Pro", "After Effects"],
             descripcion: "Edición de video profesional y creación de efectos visuales. Producción de contenido multimedia para redes sociales, trailers y presentaciones corporativas.",
-            color: "#ff5722"
+            color: "#d946ef"
         },
         {
             id: 4,
@@ -32,7 +32,7 @@ const Habilidades = () => {
             icono: "bx-joystick",
             tecnologias: ["Unity", "Blender", "C#"],
             descripcion: "Desarrollo de experiencias VR y 3D, modelado y animación en Blender. Diseño narrativo y desarrollo de historias interactivas con físicas realistas y NPCs inteligentes.",
-            color: "#e55100"
+            color: "#7c3aed"
         },
         {
             id: 5,
@@ -40,7 +40,7 @@ const Habilidades = () => {
             icono: "bx-brain",
             tecnologias: ["Python", "PyTorch", "CNN", "GAN", "U-Net"],
             descripcion: "Implementación de redes neuronales para procesamiento digital de imágenes. Experiencia en segmentación, clasificación y transferencia de estilo usando deep learning.",
-            color: "#ff6b35"
+            color: "#b946ef"
         },
         {
             id: 6,
@@ -48,7 +48,7 @@ const Habilidades = () => {
             icono: "bx-server",
             tecnologias: ["Freshdesk", "DNS", "Servidores Web"],
             descripcion: "Configuración y administración de sistemas multimedia aplicados a diferentes sectores: gastronomía, turismo, educación y salud mental.",
-            color: "#ff8c42"
+            color: "#8b5cf6"
         }
     ];
 

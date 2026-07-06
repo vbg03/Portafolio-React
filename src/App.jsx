@@ -95,7 +95,7 @@ function App() {
             opacity: 1,
             ease: 'power2.out',
             backdropFilter: 'blur(20px)',
-            background: 'rgba(10, 10, 10, 0.98)',
+            background: 'rgba(11, 6, 19, 0.98)',
             boxShadow: '0 2px 30px rgba(0, 0, 0, 0.5)'
           });
         } else {
@@ -106,7 +106,7 @@ function App() {
             opacity: 1,
             ease: 'power2.out',
             backdropFilter: 'blur(10px)',
-            background: 'rgba(10, 10, 10, 0.95)',
+            background: 'rgba(11, 6, 19, 0.95)',
             boxShadow: '0 2px 20px rgba(0, 0, 0, 0.3)'
           });
         }
@@ -810,7 +810,7 @@ function App() {
           <div class="loading-bar"></div>
           <div class="loading-bar"></div>
         </div>
-        <p style="color: #ff6b35; margin-top: 20px; font-size: 1.2rem;">Cargando experiencia...</p>
+        <p style="color: #a855f7; margin-top: 20px; font-size: 1.2rem;">Cargando experiencia...</p>
       `;
 
       loader.style.cssText = `
@@ -819,7 +819,7 @@ function App() {
         left: 0;
         width: 100%;
         height: 100%;
-        background: #0a0a0a;
+        background: #0b0613;
         display: flex;
         flex-direction: column;
         justify-content: center;

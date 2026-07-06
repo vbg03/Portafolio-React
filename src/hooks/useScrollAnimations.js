@@ -4,7 +4,7 @@ const useScrollAnimations = () => {
     const ripple = document.createElement('div');
     ripple.style.position = 'absolute';
     ripple.style.borderRadius = '50%';
-    ripple.style.background = 'rgba(255, 107, 53, 0.3)';
+    ripple.style.background = 'rgba(168, 85, 247, 0.3)';
     ripple.style.transform = 'scale(0)';
     ripple.style.animation = 'ripple 0.6s linear';
     ripple.style.left = x - 10 + 'px';
@@ -24,7 +24,7 @@ const useScrollAnimations = () => {
 
   const addGlowEffect = (element) => {
     // Agregar efecto de brillo
-    element.style.boxShadow = '0 0 20px rgba(255, 107, 53, 0.5)';
+    element.style.boxShadow = '0 0 20px rgba(168, 85, 247, 0.5)';
     element.style.transition = 'box-shadow 0.3s ease';
     
     setTimeout(() => {

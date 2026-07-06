@@ -10,9 +10,7 @@ const SobreMi = () => {
       <div className="sobre-content">
         <h2 className="heading">Sobre <span>Mi</span></h2>
         <h3 class="shimmer-text">Ingeniera Multimedia</h3>
-        <p>Soy estudiante de séptimo semestre de Ingeniería Multimedia en la Universidad Autónoma de Occidente.
-          Apasionada por la tecnología y el diseño, estoy en constante aprendizaje para integrar la creatividad y la ingeniería en soluciones innovadoras.
-          A lo largo de mi formación, he desarrollado habilidades en programación, diseño y trabajo en equipo, destacando mi paciencia y capacidad para gestionar el estrés en proyectos exigentes.</p>
+        <p>Soy Ingeniera Multimedia en proceso de grado de la Universidad Autónoma de Occidente, con formación técnica en Programación de Software del SENA. Me apasiona el desarrollo de software y la creación de soluciones tecnológicas innovadoras que integren creatividad e ingeniería.</p>
         {/*<a href="#" className="btn">Ver CV</a>*/}
       </div>
     </section>
