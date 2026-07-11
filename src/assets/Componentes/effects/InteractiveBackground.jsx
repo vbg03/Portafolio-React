@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './InteractiveBackground.css';
 
 const InteractiveBackground = () => {
   const canvasRef = useRef(null);
@@ -9,15 +10,7 @@ const InteractiveBackground = () => {
     if (window.innerWidth <= 768) return;
 
     const canvas = document.createElement('canvas');
-    canvas.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    `;
+    canvas.className = 'interactive-background';
     document.body.insertBefore(canvas, document.body.firstChild);
     canvasRef.current = canvas;
 

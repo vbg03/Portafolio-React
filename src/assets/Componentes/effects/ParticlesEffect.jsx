@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './ParticlesEffect.css';
 
 const ParticlesEffect = () => {
   const particlesRef = useRef(null);
@@ -10,16 +11,6 @@ const ParticlesEffect = () => {
     // ============= CREAR CONTENEDOR DE PARTÍCULAS =============
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles-container';
-    particlesContainer.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    `;
     document.body.appendChild(particlesContainer);
     particlesRef.current = particlesContainer;
 
@@ -37,15 +28,11 @@ const ParticlesEffect = () => {
       const opacity = Math.random() * 0.3 + 0.1;
       
       particle.style.cssText = `
-        position: absolute;
         width: ${size}px;
         height: ${size}px;
-        background: #a855f7;
-        border-radius: 50%;
         left: ${startX}px;
-        top: 100vh;
         opacity: ${opacity};
-        animation: floatUp ${duration}s linear forwards;
+        animation-duration: ${duration}s;
       `;
       
       // Agregar brillo ocasional
@@ -72,50 +59,12 @@ const ParticlesEffect = () => {
     const particleInterval = setInterval(createParticle, 1000);
 
     // ============= AGREGAR ESTILOS CSS SOLO PARA PARTÍCULAS =============
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes floatUp {
-        0% {
-          transform: translateY(0) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.3;
-        }
-        90% {
-          opacity: 0.3;
-        }
-        100% {
-          transform: translateY(-100vh) rotate(360deg);
-          opacity: 0;
-        }
-      }
-      
-      /* ASEGURAR CURSOR NORMAL - CORREGIR CUALQUIER OVERRIDE */
-      * {
-        cursor: auto !important;
-      }
-      
-      a, button, .btn, .proyecto-link, .navbar a {
-        cursor: pointer !important;
-      }
-      
-      .proyecto-modal-overlay, .proyecto-modal {
-        cursor: default !important;
-      }
-    `;
-    document.head.appendChild(style);
-
     // ============= CLEANUP =============
     return () => {
       clearInterval(particleInterval);
       
       if (particlesContainer && particlesContainer.parentNode) {
         particlesContainer.parentNode.removeChild(particlesContainer);
-      }
-      
-      if (style && style.parentNode) {
-        style.parentNode.removeChild(style);
       }
     };
   }, []);

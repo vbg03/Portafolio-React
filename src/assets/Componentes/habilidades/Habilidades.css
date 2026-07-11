@@ -1,0 +1,488 @@
+/* ========== HABILIDADES MEJORADAS ========== */
+.habilidades {
+    padding: 10rem 9% 2rem;
+    background: var(--second-bg-color);
+    perspective: 1000px;
+    /* Para efectos 3D */
+}
+
+.habilidades h2 {
+    margin-bottom: 6rem;
+}
+
+.habilidades-section {
+    margin-bottom: 8rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    transform-style: preserve-3d;
+    /* Para animaciones 3D */
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--gradient-primary);
+    margin-left: 2rem;
+    border-radius: 1px;
+}
+
+.section-title i {
+    font-size: 3.5rem;
+    color: var(--main-color);
+    filter: drop-shadow(0 0 10px rgba(235, 53, 255, 0.3));
+}
+
+/* ========== HABILIDADES TÉCNICAS ========== */
+.habilidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    perspective: 1000px;
+    /* Para efectos 3D */
+}
+
+.habilidad-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    background: var(--card-bg-color);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    /* Para animaciones 3D */
+    will-change: transform;
+    /* Optimización de rendimiento */
+}
+
+.habilidad-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.habilidad-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--main-color);
+    box-shadow: 0 20px 40px rgba(255, 53, 242, 0.1);
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(238, 53, 255, 0.03) 100%);
+}
+
+.habilidad-card:hover::before {
+    transform: scaleX(1);
+}
+
+.habilidad-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(252, 53, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 53, 248, 0.2);
+}
+
+.habilidad-icon i {
+    font-size: 3.5rem;
+    transition: all 0.4s ease;
+}
+
+.habilidad-card:hover .habilidad-icon {
+    background: rgba(225, 53, 255, 0.15);
+    border-color: rgba(238, 53, 255, 0.4);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.habilidad-card:hover .habilidad-icon i {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(228, 53, 255, 0.5));
+}
+
+.habilidad-content {
+    flex: 1;
+}
+
+.habilidad-titulo {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.tecnologias-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tag {
+    background: rgba(228, 53, 255, 0.1);
+    color: var(--main-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border: 1px solid rgba(231, 53, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.tech-tag:hover {
+    background: var(--main-color);
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(218, 53, 255, 0.3);
+}
+
+.tech-tag:hover::before {
+    left: 100%;
+}
+
+.habilidad-descripcion {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ========== HABILIDADES BLANDAS ========== */
+.habilidades-blandas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.habilidad-blanda {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.habilidad-blanda::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.habilidad-blanda:hover {
+    transform: translateY(-5px);
+    border-color: var(--main-color);
+    box-shadow: 0 15px 30px rgba(252, 53, 255, 0.1);
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, rgba(168, 85, 247, 0.04) 100%);
+}
+
+.habilidad-blanda:hover::before {
+    transform: scaleX(1);
+}
+
+.habilidad-blanda-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(211, 53, 255, 0.1);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.habilidad-blanda-icon i {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.habilidad-blanda:hover .habilidad-blanda-icon {
+    background: rgba(201, 53, 255, 0.15);
+    transform: scale(1.1);
+}
+
+.habilidad-blanda:hover .habilidad-blanda-icon i {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(205, 53, 255, 0.4));
+}
+
+.habilidad-blanda-content h4 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.habilidad-blanda-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+    .habilidades-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+}
+
+@media (max-width: 991px) {
+    .habilidades {
+        padding: 10rem 3% 2rem;
+    }
+
+    .habilidades-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .habilidad-card {
+        padding: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .habilidad-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .habilidad-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+    }
+
+    .habilidad-icon i {
+        font-size: 3rem;
+    }
+
+    .habilidad-titulo {
+        font-size: 2rem;
+    }
+
+    .habilidades-blandas-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .habilidad-blanda {
+        padding: 2rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .section-title::after {
+        margin-left: 0;
+        width: 50%;
+        align-self: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .tecnologias-tags {
+        justify-content: center;
+    }
+
+    .tech-tag {
+        font-size: 1.2rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .habilidad-titulo {
+        font-size: 1.8rem;
+    }
+
+    .habilidad-descripcion {
+        font-size: 1.4rem;
+    }
+}
+
+/* ========== ANIMACIONES GSAP CORREGIDAS - Estados iniciales sin 3D ========== */
+
+/* Títulos de sección */
+.section-title {
+    opacity: 0;
+    transform: translateX(-50px);
+    will-change: transform, opacity;
+}
+
+/* Habilidades Técnicas - SIN efectos 3D problemáticos */
+.gsap-habilidad-card {
+    opacity: 0;
+    transform: translateY(80px) scale(0.8);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.gsap-habilidad-icon {
+    opacity: 0;
+    transform: scale(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.gsap-icon {
+    opacity: 0;
+    transform: scale(0.5);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.gsap-titulo {
+    opacity: 0;
+    transform: translateX(30px);
+    will-change: transform, opacity;
+}
+
+.gsap-tech-tag {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-origin: center center;
+}
+
+.gsap-descripcion {
+    opacity: 0;
+    transform: translateY(15px);
+    will-change: transform, opacity;
+}
+
+/* Habilidades Blandas */
+.gsap-habilidad-blanda {
+    opacity: 0;
+    transform: scale(0.9);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.gsap-blanda-icon {
+    opacity: 0;
+    transform: scale(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.gsap-blanda-content {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform, opacity;
+}
+
+/* Asegurar que no haya conflictos con CSS transitions */
+.gsap-habilidad-card,
+.gsap-habilidad-icon,
+.gsap-icon,
+.gsap-titulo,
+.gsap-tech-tag,
+.gsap-descripcion,
+.gsap-habilidad-blanda,
+.gsap-blanda-icon,
+.gsap-blanda-content {
+    transition: none !important;
+    /* Evitar conflictos con GSAP */
+}
+
+/* Fallback para mostrar elementos si GSAP falla */
+.no-js .gsap-habilidad-card,
+.no-js .gsap-habilidad-icon,
+.no-js .gsap-icon,
+.no-js .gsap-titulo,
+.no-js .gsap-tech-tag,
+.no-js .gsap-descripcion,
+.no-js .gsap-habilidad-blanda,
+.no-js .gsap-blanda-icon,
+.no-js .gsap-blanda-content,
+.no-js .section-title {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Asegurar que las cards mantengan su forma normal */
+.habilidad-card,
+.habilidad-blanda {
+    transform-style: flat;
+    /* Evitar problemas 3D */
+    backface-visibility: hidden;
+}
+
+/* Optimizaciones adicionales */
+.habilidades-grid,
+.habilidades-blandas-grid {
+    transform-style: flat;
+    will-change: auto;
+}
+
+@media (max-width: 991px) {
+    .habilidades {
+        padding: 10rem 3% 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .habilidades-container .habilidades-box {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Header from "./assets/Componentes/header/Header.jsx";
 import './App.css'
+import Header from "./assets/Componentes/header/Header.jsx";
 import Footer from './assets/Componentes/footer/Footer.jsx';
 import Inicio from './assets/Componentes/inicio/Inicio.jsx';
 import SobreMi from './assets/Componentes/sobre-mi/SobreMi.jsx';

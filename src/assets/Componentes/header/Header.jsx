@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Header.css';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <a href="#inicio" className="logo">Mi Portafolio</a>
+      <a href="#inicio" className="logo">It's.Val</a>
 
       <i
         className={`bx ${open ? 'bx-x' : 'bx-menu'}`}
@@ -52,6 +53,10 @@ const Header = () => {
           Proyectos
         </a>
       </nav>
+
+      <button className="btn" onClick={() => handleLinkClick(event, '#cv')}>
+        Ver mi CV
+      </button>
     </header>
   );
 };

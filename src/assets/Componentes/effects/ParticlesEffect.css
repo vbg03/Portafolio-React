@@ -1,0 +1,51 @@
+/* Los valores variables de cada partícula (tamaño, posición y duración)
+   se mantienen en línea porque se calculan en tiempo de ejecución. */
+.particles-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: var(--main-color);
+    border-radius: 50%;
+    top: 100vh;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10%,
+    90% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+a,
+button,
+.btn,
+.proyecto-link,
+.navbar a {
+    cursor: pointer !important;
+}
+
+.proyecto-modal-overlay,
+.proyecto-modal {
+    cursor: default !important;
+}
