@@ -13,37 +13,38 @@
 
 :root {
     /* Colores principales - Tema violeta oscuro */
-    --bg-color: #0b0613;
-    --second-bg-color: #150f22;
-    --card-bg-color: #21172f;
-    --text-color: #f8f2ff;
-    --text-secondary: #c8b8dc;
+    --bg-color: #ffffff;
+    --second-bg-color: #ffffff;
+    --card-bg-color: #ffffff;
+    --text-color: #2b2b2b;
+    --text-secondary: #ff6fc1;
 
     /* Acentos violetas */
-    --main-color: #a855f7;
-    --accent-color: #d946ef;
-    --bright-violet: #c084fc;
-    --dark-violet: #6d28d9;
+    --main-color: #ff4fb1;
+    --accent-color: #ef46ca;
+    --bright-violet: #fc84de;
+    --dark-violet: #d92895;
 
     /* Gradientes profesionales */
     --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #a855f7 48%, #d946ef 100%);
     --gradient-dark: linear-gradient(135deg, #150f22 0%, #21172f 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(217, 70, 239, 0.1) 100%);
+    --gradient-glow: linear-gradient(120deg, rgba(168, 85, 247, 0.2) 0%, rgba(217, 70, 239, 0.1) 100%);
 
     /* Efectos y sombras */
-    --shadow-light: 0 4px 6px rgba(168, 85, 247, 0.1);
+    --shadow-light: 0 1px 3px rgba(255, 125, 190, 0.755);
     --shadow-medium: 0 8px 25px rgba(168, 85, 247, 0.18);
     --shadow-heavy: 0 15px 35px rgba(217, 70, 239, 0.22);
-    --glow-violet: 0 0 22px rgba(168, 85, 247, 0.35);
+    --glow-violet: 0 0 22px rgba(247, 85, 196, 0.35);
 
     /* Borders */
-    --border-color: #352447;
-    --border-accent: rgba(168, 85, 247, 0.35);
+    --border-accent: rgba(232, 150, 211, 0.35);
 }
 
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    scrollbar-color: #e0218a #ffe3f1;
+    scrollbar-width: thin;
 }
 
 body {
@@ -52,9 +53,6 @@ body {
     overflow-x: hidden;
     padding-top: 0;
     /* GSAP manejará el espaciado */
-    background-image:
-        radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(217, 70, 239, 0.06) 0%, transparent 50%);
 }
 
 section {
@@ -67,23 +65,9 @@ section {
     overflow-x: hidden;
 }
 
-section:nth-child(even) {
+section:nth-child(even):not(.inicio) {
     background: var(--second-bg-color);
 }
-
-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-}
-
 
 span {
     color: var(--main-color);
@@ -92,44 +76,36 @@ span {
 
 .heading {
     text-align: center;
+    font-family: 'Poppins', sans-serif;
     font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
     margin-bottom: 3rem;
 }
 
-/* ========== SCROLLBAR ========== */
+/* ========== SCROLLBAR GENERAL ========== */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--second-bg-color);
+    background: #ffe3f1;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--gradient-primary);
-    border-radius: 4px;
+    border: 2px solid #ffe3f1;
+    border-radius: 999px;
+    background: #e0218a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--bright-violet);
+    background: #c41476;
 }
 
 ::selection {
     background: rgba(215, 53, 255, 0.3);
     color: white;
-}
-
-section:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 3px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
 }
 
 @media (max-width: 1200px) {

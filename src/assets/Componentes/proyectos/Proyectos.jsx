@@ -1,21 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './Proyectos.css';
 
 const Proyectos = () => {
     const [proyectoActivo, setProyectoActivo] = useState(null);
+    const [filtroActivo, setFiltroActivo] = useState('Todos');
     const videoRefs = useRef({});
 
     const proyectos = [
         {
             id: 1,
-            nombre: "El viaje del agua - Trabajo de grado",
+            nombre: "El viaje del agua - Pasantía Comunitaria",
             categoria: "Full Stack",
             descripcion: "Aplicación web completa de streaming de películas con sistema de autenticación, catálogo interactivo, búsqueda avanzada por géneros, reproducción de trailers y diseño responsivo. Incluye carrusel automático, integración con API de películas y gestión de estado de usuario.",
             tecnologias: ["React", "JavaScript", "CSS3", "Firebase Auth", "React Router", "TMDB API", "Materialize CSS", "Font Awesome"],
-            videoUrl: "/videos/CineLuxe.mp4",
-            imagenFallback: "/Imagenes/CineLuxe.png",
-            githubUrl: "https://github.com/vbg03/CineLuxe",
-            demoUrl: "https://cine-luxe.vercel.app/",
+            videoUrl: "/videos/ptar.mp4",
+            imagenFallback: "/Imagenes/ptar.png",
+            githubUrl: "https://github.com/vbg03/PTAR_WEB",
+            demoUrl: "https://ptar-web.vercel.app/",
             duracion: "38 semanas",
             año: "2026",
             colaboradores: [{   
@@ -70,8 +72,146 @@ const Proyectos = () => {
                     linkedin: "https://www.linkedin.com/in/juandaortegaa/",
                 }
             ]
+        },
+        {
+            id: 4,
+            nombre: "IA",
+            categoria: "UX/UI Design",
+            descripcion: "Prototipo de aplicación móvil para turistas que desean explorar la gastronomía local de Cali, Valle del Cauca. Incluye mapas interactivos, recomendaciones personalizadas, reseñas de restaurantes locales, rutas gastronómicas y guías culturales de platos típicos vallecaucanos.",
+            tecnologias: ["Figma", "UI/UX Design", "Prototyping", "User Research", "Information Architecture", "Mobile Design", "Design System"],
+            videoUrl: "/videos/SaborCali.mp4",
+            imagenFallback: "/Imagenes/SaborCali.png",
+            demoUrl: "https://www.figma.com/proto/FGIVibsUZElxBIQUuKZ2oJ/Proyecto?node-id=25-150&p=f&t=oWqg7gWxD6wKAhSK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=32%3A135&show-proto-sidebar=1",
+            duracion: "13 semanas",
+            año: "2024",
+            colaboradores: [
+                {
+                    nombre: "Natalia Andrea Hernández Piedrahita",
+                    linkedin: "https://www.linkedin.com/in/natalia-hernandez-322056247/",
+                    portfolio: "https://portafolioprofesional.vercel.app/"
+                },
+                {
+                    nombre: "Andres Felipe Artulo",
+                    linkedin: "https://www.linkedin.com/in/andresfelipearturo/",
+                },
+                {
+                    nombre: "Yinela Primero Perez",
+                    linkedin: "https://www.linkedin.com/in/yinela/",
+                },
+                {
+                    nombre: "Juan David Ortega Angarita",
+                    linkedin: "https://www.linkedin.com/in/juandaortegaa/",
+                }
+            ]
+        },
+        {
+            id: 5,
+            nombre: "Proyecto de Tolerancia a Fallos en Kubernetes",
+            categoria: "UX/UI Design",
+            descripcion: "Prototipo de aplicación móvil para turistas que desean explorar la gastronomía local de Cali, Valle del Cauca. Incluye mapas interactivos, recomendaciones personalizadas, reseñas de restaurantes locales, rutas gastronómicas y guías culturales de platos típicos vallecaucanos.",
+            tecnologias: ["Figma", "UI/UX Design", "Prototyping", "User Research", "Information Architecture", "Mobile Design", "Design System"],
+            videoUrl: "/videos/SaborCali.mp4",
+            imagenFallback: "/Imagenes/SaborCali.png",
+            demoUrl: "https://www.figma.com/proto/FGIVibsUZElxBIQUuKZ2oJ/Proyecto?node-id=25-150&p=f&t=oWqg7gWxD6wKAhSK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=32%3A135&show-proto-sidebar=1",
+            duracion: "13 semanas",
+            año: "2024",
+            colaboradores: [
+                {
+                    nombre: "Natalia Andrea Hernández Piedrahita",
+                    linkedin: "https://www.linkedin.com/in/natalia-hernandez-322056247/",
+                    portfolio: "https://portafolioprofesional.vercel.app/"
+                },
+                {
+                    nombre: "Andres Felipe Artulo",
+                    linkedin: "https://www.linkedin.com/in/andresfelipearturo/",
+                },
+                {
+                    nombre: "Yinela Primero Perez",
+                    linkedin: "https://www.linkedin.com/in/yinela/",
+                },
+                {
+                    nombre: "Juan David Ortega Angarita",
+                    linkedin: "https://www.linkedin.com/in/juandaortegaa/",
+                }
+            ]
+        },
+        {
+            id: 6,
+            nombre: "Microservicios Redes Sociales",
+            categoria: "UX/UI Design",
+            descripcion: "Prototipo de aplicación móvil para turistas que desean explorar la gastronomía local de Cali, Valle del Cauca. Incluye mapas interactivos, recomendaciones personalizadas, reseñas de restaurantes locales, rutas gastronómicas y guías culturales de platos típicos vallecaucanos.",
+            tecnologias: ["Figma", "UI/UX Design", "Prototyping", "User Research", "Information Architecture", "Mobile Design", "Design System"],
+            videoUrl: "/videos/SaborCali.mp4",
+            imagenFallback: "/Imagenes/SaborCali.png",
+            demoUrl: "https://www.figma.com/proto/FGIVibsUZElxBIQUuKZ2oJ/Proyecto?node-id=25-150&p=f&t=oWqg7gWxD6wKAhSK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=32%3A135&show-proto-sidebar=1",
+            duracion: "13 semanas",
+            año: "2024",
+            colaboradores: [
+                {
+                    nombre: "Natalia Andrea Hernández Piedrahita",
+                    linkedin: "https://www.linkedin.com/in/natalia-hernandez-322056247/",
+                    portfolio: "https://portafolioprofesional.vercel.app/"
+                },
+                {
+                    nombre: "Andres Felipe Artulo",
+                    linkedin: "https://www.linkedin.com/in/andresfelipearturo/",
+                },
+                {
+                    nombre: "Yinela Primero Perez",
+                    linkedin: "https://www.linkedin.com/in/yinela/",
+                },
+                {
+                    nombre: "Juan David Ortega Angarita",
+                    linkedin: "https://www.linkedin.com/in/juandaortegaa/",
+                }
+            ]
+        },
+        {
+            id: 7,
+            nombre: "Microservicios Tienda Virtual",
+            categoria: "UX/UI Design",
+            descripcion: "Prototipo de aplicación móvil para turistas que desean explorar la gastronomía local de Cali, Valle del Cauca. Incluye mapas interactivos, recomendaciones personalizadas, reseñas de restaurantes locales, rutas gastronómicas y guías culturales de platos típicos vallecaucanos.",
+            tecnologias: ["Figma", "UI/UX Design", "Prototyping", "User Research", "Information Architecture", "Mobile Design", "Design System"],
+            videoUrl: "/videos/SaborCali.mp4",
+            imagenFallback: "/Imagenes/SaborCali.png",
+            demoUrl: "https://www.figma.com/proto/FGIVibsUZElxBIQUuKZ2oJ/Proyecto?node-id=25-150&p=f&t=oWqg7gWxD6wKAhSK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=32%3A135&show-proto-sidebar=1",
+            duracion: "13 semanas",
+            año: "2024",
+            colaboradores: [
+                {
+                    nombre: "Natalia Andrea Hernández Piedrahita",
+                    linkedin: "https://www.linkedin.com/in/natalia-hernandez-322056247/",
+                    portfolio: "https://portafolioprofesional.vercel.app/"
+                },
+                {
+                    nombre: "Andres Felipe Artulo",
+                    linkedin: "https://www.linkedin.com/in/andresfelipearturo/",
+                },
+                {
+                    nombre: "Yinela Primero Perez",
+                    linkedin: "https://www.linkedin.com/in/yinela/",
+                },
+                {
+                    nombre: "Juan David Ortega Angarita",
+                    linkedin: "https://www.linkedin.com/in/juandaortegaa/",
+                }
+            ]
         }
     ];
+
+    const filtros = [
+        { etiqueta: 'Todos', valor: 'Todos' },
+        { etiqueta: 'Desarrollo', valor: 'Full Stack' },
+        { etiqueta: 'UI/UX', valor: 'UX/UI Design' }
+    ];
+
+    const proyectosFiltrados = filtroActivo === 'Todos'
+        ? proyectos
+        : proyectos.filter((proyecto) => proyecto.categoria === filtroActivo);
+
+    const proyectoDestacadoId = filtroActivo === 'Todos'
+        ? 1
+        : proyectosFiltrados[0]?.id;
 
     // Manejar reproducción de video al hacer hover
     const handleVideoHover = (proyectoId, play) => {
@@ -135,174 +275,152 @@ const Proyectos = () => {
 
     return (
         <section className="proyectos" id='proyectos'>
-            <h2 className="heading">Mis <span>Proyectos</span></h2>
-            <p className="proyectos-subtitle">
-                Una selección de mis trabajos más destacados en desarrollo web y programación
-            </p>
+            <div className="proyectos-encabezado">
+                <div className="proyectos-presentacion">
+                    <p className="proyectos-eyebrow">
+                        <span aria-hidden="true">✦</span>
+                        Mi trabajo
+                    </p>
+
+                    <h2 className="heading proyectos-heading">
+                        Mis <span>Proyectos</span>
+                        <span className="proyectos-corazon" aria-hidden="true">♡</span>
+                    </h2>
+
+                    <p className="proyectos-subtitle">
+                        Una selección de proyectos donde combino diseño, desarrollo y creatividad
+                        para crear experiencias digitales con propósito.
+                    </p>
+                </div>
+
+                <div className="proyectos-filtros" aria-label="Filtrar proyectos">
+                    {filtros.map((filtro) => (
+                        <button
+                            key={filtro.valor}
+                            type="button"
+                            className={`proyectos-filtro ${filtroActivo === filtro.valor ? 'activo' : ''}`}
+                            aria-pressed={filtroActivo === filtro.valor}
+                            onClick={() => setFiltroActivo(filtro.valor)}
+                        >
+                            {filtro.etiqueta}
+                        </button>
+                    ))}
+                </div>
+            </div>
 
             <div className="proyectos-container-mejorado">
-                {proyectos.map((proyecto) => (
-                    <div
-                        key={proyecto.id}
-                        className="proyecto-card"
-                        onMouseEnter={() => handleVideoHover(proyecto.id, true)}
-                        onMouseLeave={() => handleVideoHover(proyecto.id, false)}
-                        onClick={(e) => handleProyectoClick(proyecto, e)}
-                        style={{ cursor: 'pointer' }} // Asegurar que se vea clickeable
-                    >
-                        <div className="proyecto-media">
-                            <video
-                                ref={el => videoRefs.current[proyecto.id] = el}
-                                className="proyecto-video"
-                                muted
-                                loop
-                                playsInline
-                                poster={proyecto.imagenFallback}
-                            >
-                                <source src={proyecto.videoUrl} type="video/mp4" />
-                            </video>
-                            <img
-                                src={proyecto.imagenFallback}
-                                alt={proyecto.nombre}
-                                className="proyecto-imagen-fallback"
-                                onError={(e) => {
-                                    e.target.src = "/Imagenes/github.png";
-                                }}
-                            />
-                            <div className="proyecto-overlay-fixed">
-                                <div className="proyecto-categoria">{proyecto.categoria}</div>
-                                <div className="proyecto-año">{proyecto.año}</div>
-                            </div>
-                        </div>
+                {proyectosFiltrados.map((proyecto) => {
+                    const esDestacado = proyecto.id === proyectoDestacadoId;
 
-                        <div className="proyecto-info">
-                            <h3 className="proyecto-titulo">{proyecto.nombre}</h3>
-                            <p className="proyecto-descripcion">{proyecto.descripcion}</p>
-
-                            <div className="proyecto-tecnologias">
-                                {proyecto.tecnologias.slice(0, 3).map((tech, index) => (
-                                    <span key={index} className="tech-badge">{tech}</span>
-                                ))}
-                                {proyecto.tecnologias.length > 3 && (
-                                    <span className="tech-badge-more">+{proyecto.tecnologias.length - 3}</span>
-                                )}
-                            </div>
-
-                            <div className="proyecto-acciones">
-                                {proyecto.githubUrl && (
-                                    <a
-                                        href={proyecto.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="proyecto-link github-link"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <i className='bx bxl-github'></i>
-                                        Código
-                                    </a>
-                                )}
-                                {proyecto.demoUrl && (
-                                    <a
-                                        href={proyecto.demoUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="proyecto-link demo-link"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <i className='bx bx-link-external'></i>
-                                        Demo
-                                    </a>
-                                )}
-                                <button
-                                    className="proyecto-link details-link"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleProyectoClick(proyecto);
-                                    }}
+                    return (
+                        <article
+                            key={proyecto.id}
+                            className={`proyecto-card ${esDestacado ? 'proyecto-card--destacado' : ''}`}
+                            onMouseEnter={() => handleVideoHover(proyecto.id, true)}
+                            onMouseLeave={() => handleVideoHover(proyecto.id, false)}
+                            onClick={(e) => handleProyectoClick(proyecto, e)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleProyectoClick(proyecto);
+                                }
+                            }}
+                            role="button"
+                            tabIndex="0"
+                            aria-label={`Ver detalles de ${proyecto.nombre}`}
+                        >
+                            <div className="proyecto-media">
+                                <video
+                                    ref={el => videoRefs.current[proyecto.id] = el}
+                                    className="proyecto-video"
+                                    muted
+                                    loop
+                                    playsInline
+                                    poster={proyecto.imagenFallback}
                                 >
-                                    <i className='bx bx-info-circle'></i>
-                                    Detalles
-                                </button>
-                            </div>
+                                    <source src={proyecto.videoUrl} type="video/mp4" />
+                                </video>
+                                <img
+                                    src={proyecto.imagenFallback}
+                                    alt=""
+                                    className="proyecto-imagen-fallback"
+                                    onError={(e) => {
+                                        e.target.src = "/Imagenes/github.png";
+                                    }}
+                                />
 
-                            <div className="proyecto-meta">
-                                <span className="proyecto-duracion">
-                                    <i className='bx bx-time'></i>
-                                    {proyecto.duracion}
-                                </span>
-                                {proyecto.colaboradores && proyecto.colaboradores.length > 0 && (
-                                    <span className="proyecto-colaboradores">
-                                        <i className='bx bx-group'></i>
-                                        {proyecto.colaboradores.length} colaborador{proyecto.colaboradores.length > 1 ? 'es' : ''}
+                                {esDestacado && (
+                                    <span className="proyecto-destacado">
+                                        <i className="bx bxs-star" aria-hidden="true"></i>
+                                        Proyecto destacado
                                     </span>
                                 )}
+
+                                <span className="proyecto-categoria">{proyecto.categoria}</span>
                             </div>
-                        </div>
-                    </div>
-                ))}
+
+                            <div className="proyecto-info">
+                                <div className="proyecto-resumen">
+                                    <span className="proyecto-icono" aria-hidden="true">
+                                        <i className={proyecto.categoria === 'UX/UI Design' ? 'bx bx-mobile-alt' : 'bx bx-code-alt'}></i>
+                                    </span>
+
+                                    <div>
+                                        <h3 className="proyecto-titulo">{proyecto.nombre}</h3>
+                                        <p className="proyecto-descripcion">{proyecto.descripcion}</p>
+                                    </div>
+                                </div>
+
+                                <div className="proyecto-pie">
+                                    <div className="proyecto-tecnologias" aria-label="Tecnologías">
+                                        {proyecto.tecnologias.slice(0, esDestacado ? 4 : 3).map((tech) => (
+                                            <span key={tech} className="tech-badge">{tech}</span>
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        className={`proyecto-link details-link ${esDestacado ? 'details-link--destacado' : ''}`}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleProyectoClick(proyecto);
+                                        }}
+                                        aria-label={`Abrir detalles de ${proyecto.nombre}`}
+                                    >
+                                        {esDestacado && <span>Ver proyecto</span>}
+                                        <i className='bx bx-up-arrow-alt' aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    );
+                })}
             </div>
 
             {/* Modal de detalles del proyecto - MEJORADO */}
-            {proyectoActivo && (
+            {proyectoActivo && createPortal(
                 <div 
                     className="proyecto-modal-overlay" 
                     onClick={cerrarModal}
-                    style={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        zIndex: 10000,
-                        padding: '2rem',
-                        backdropFilter: 'blur(10px)'
-                    }}
                 >
                     <div 
                         className="proyecto-modal" 
                         onClick={(e) => e.stopPropagation()}
-                        style={{
-                            backgroundColor: 'var(--card-bg-color)',
-                            borderRadius: '20px',
-                            maxWidth: '900px',
-                            width: '100%',
-                            maxHeight: '90vh',
-                            overflowY: 'auto',
-                            position: 'relative',
-                            border: '1px solid var(--border-color)',
-                            animation: 'modalSlideIn 0.3s ease-out'
-                        }}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="proyecto-modal-title"
                     >
                         <button 
+                            type="button"
                             className="modal-close" 
                             onClick={cerrarModal}
-                            style={{
-                                position: 'absolute',
-                                top: '1rem',
-                                right: '1rem',
-                                width: '40px',
-                                height: '40px',
-                                border: 'none',
-                                background: 'rgba(168, 85, 247, 0.18)',
-                                color: 'var(--main-color)',
-                                borderRadius: '50%',
-                                cursor: 'pointer',
-                                zIndex: 10,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '2rem'
-                            }}
+                            aria-label="Cerrar detalles del proyecto"
                         >
-                            <i className='bx bx-x'></i>
+                            <i className='bx bx-x' aria-hidden="true"></i>
                         </button>
 
                         <div className="modal-content">
-                            <div className="modal-media" style={{ height: '300px', overflow: 'hidden', background: '#000' }}>
+                            <div className="modal-media">
                                 <video
                                     className="modal-video"
                                     controls
@@ -310,15 +428,14 @@ const Proyectos = () => {
                                     muted
                                     loop
                                     poster={proyectoActivo.imagenFallback}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 >
                                     <source src={proyectoActivo.videoUrl} type="video/mp4" />
                                 </video>
                             </div>
 
-                            <div className="modal-info" style={{ padding: '3rem' }}>
-                                <div className="modal-header" style={{ marginBottom: '2rem' }}>
-                                    <h2 style={{ fontSize: '2.8rem', color: 'var(--text-color)', marginBottom: '1rem' }}>
+                            <div className="modal-info">
+                                <div className="modal-header">
+                                    <h2 id="proyecto-modal-title" style={{ fontSize: '2.8rem', color: 'var(--text-color)', marginBottom: '1rem' }}>
                                         {proyectoActivo.nombre}
                                     </h2>
                                     <span 
@@ -557,7 +674,8 @@ const Proyectos = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </section>
     );

@@ -3,6 +3,7 @@ import './App.css'
 import Header from "./assets/Componentes/header/Header.jsx";
 import Footer from './assets/Componentes/footer/Footer.jsx';
 import Inicio from './assets/Componentes/inicio/Inicio.jsx';
+import Fortalezas from './assets/Componentes/fortalezas/Fortalezas.jsx';
 import SobreMi from './assets/Componentes/sobre-mi/SobreMi.jsx';
 import Habilidades from './assets/Componentes/habilidades/Habilidades.jsx';
 import Proyectos from './assets/Componentes/proyectos/Proyectos.jsx';
@@ -16,49 +17,14 @@ import { TextPlugin } from 'gsap/TextPlugin';
 // Registrar plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+// Interruptor temporal para reactivar las partículas cuando se necesiten.
+const PARTICLES_ENABLED = false;
+
 function App() {
   useEffect(() => {
     // ============= CONFIGURACIÓN INICIAL =============
     const menuIcon = document.querySelector('#menu-icon');
     const navbar = document.querySelector('.navbar');
-
-    if (menuIcon && navbar) {
-      const handleMenuClick = () => {
-        menuIcon.classList.toggle('bx-x');
-        navbar.classList.toggle('active');
-      };
-      menuIcon.addEventListener('click', handleMenuClick);
-    }
-
-    // ============= NAVEGACIÓN ACTIVA =============
-    const sections = document.querySelectorAll('section');
-    const navlinks = document.querySelectorAll('header nav a');
-
-    const updateActiveNav = () => {
-      let current = '';
-      sections.forEach(sec => {
-        const sectionTop = sec.offsetTop - 150;
-        const sectionHeight = sec.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          current = sec.getAttribute('id');
-        }
-      });
-
-      navlinks.forEach(link => {
-        link.classList.remove('active');
-        if (current && link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-
-          // Efecto de pulso en navegación activa
-          gsap.fromTo(link,
-            { scale: 1 },
-            { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 }
-          );
-        }
-      });
-    };
-
-    window.addEventListener('scroll', updateActiveNav);
 
     // ============= HEADER SCROLL BEHAVIOR =============
     const initializeHeader = () => {
@@ -79,40 +45,6 @@ function App() {
 
     initializeHeader();
 
-    ScrollTrigger.create({
-      trigger: document.body,
-      start: 'top -50',
-      end: 'bottom bottom',
-      onUpdate: self => {
-        const header = document.querySelector('header');
-        if (!header) return;
-
-        if (self.direction === 1 && self.progress > 0.01) {
-          // Scrolling down
-          gsap.to(header, {
-            duration: 0.3,
-            y: 0,
-            opacity: 1,
-            ease: 'power2.out',
-            backdropFilter: 'blur(20px)',
-            background: 'rgba(11, 6, 19, 0.98)',
-            boxShadow: '0 2px 30px rgba(0, 0, 0, 0.5)'
-          });
-        } else {
-          // Scrolling up or at top
-          gsap.to(header, {
-            duration: 0.3,
-            y: 0,
-            opacity: 1,
-            ease: 'power2.out',
-            backdropFilter: 'blur(10px)',
-            background: 'rgba(11, 6, 19, 0.95)',
-            boxShadow: '0 2px 20px rgba(0, 0, 0, 0.3)'
-          });
-        }
-      }
-    });
-
     // ============= ANIMACIONES DE ENTRADA =============
     const masterTimeline = gsap.timeline();
 
@@ -124,14 +56,6 @@ function App() {
       masterTimeline.fromTo(headerEl,
         { y: -100, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-      );
-    }
-    
-    if (logoEl) {
-      masterTimeline.fromTo(logoEl,
-        { scale: 0, rotation: -180 },
-        { scale: 1, rotation: 0, duration: 0.8, ease: 'back.out(1.7)' },
-        '-=0.5'
       );
     }
 
@@ -712,50 +636,12 @@ function App() {
       });
     }
 
-    // ============= TEXTO ANIMADO PROFESIONAL =============
-    const multipleTextElement = document.querySelector('.multiple-text');
-    if (multipleTextElement) {
-      const texts = ['profesional', 'Ingeniera Multimedia', 'Desarrolladora', 'Diseñadora UX/UI'];
-      let currentText = 0;
-
-      const animateText = () => {
-        // Efecto de desvanecimiento hacia afuera
-        gsap.to(multipleTextElement, {
-          duration: 0.3,
-          opacity: 0,
-          scale: 0.8,
-          ease: 'power2.in',
-          onComplete: () => {
-            // Cambiar texto
-            multipleTextElement.textContent = texts[currentText];
-
-            // Efecto de aparición
-            gsap.fromTo(multipleTextElement,
-              { opacity: 0, scale: 0.8, y: 20 },
-              {
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'back.out(1.7)',
-                onComplete: () => {
-                  setTimeout(() => {
-                    currentText = (currentText + 1) % texts.length;
-                    animateText();
-                  }, 2500);
-                }
-              }
-            );
-          }
-        });
-      };
-
-      // Iniciar animación después de un delay
-      setTimeout(() => animateText(), 1000);
-    }
-
     // ============= SCROLL SUAVE =============
+    const smoothScrollHandlers = new Map();
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      if (anchor.closest('.header')) return;
+
       const handleClick = (e) => {
         e.preventDefault();
         const target = document.querySelector(anchor.getAttribute('href'));
@@ -775,6 +661,7 @@ function App() {
       };
 
       anchor.addEventListener('click', handleClick);
+      smoothScrollHandlers.set(anchor, handleClick);
     });
 
     // ============= RESIZE HANDLER =============
@@ -810,7 +697,7 @@ function App() {
           <div class="loading-bar"></div>
           <div class="loading-bar"></div>
         </div>
-        <p style="color: #a855f7; margin-top: 20px; font-size: 1.2rem;">Cargando experiencia...</p>
+        <p style="color: #f755cc; margin-top: 20px; font-size: 1.2rem;">Cargando experiencia...</p>
       `;
 
       loader.style.cssText = `
@@ -858,15 +745,10 @@ function App() {
       gsap.killTweensOf('*');
 
       // Remover event listeners
-      window.removeEventListener('scroll', updateActiveNav);
       window.removeEventListener('resize', handleResize);
 
-      if (menuIcon) {
-        menuIcon.removeEventListener('click', () => { });
-      }
-
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', () => { });
+      smoothScrollHandlers.forEach((handleClick, anchor) => {
+        anchor.removeEventListener('click', handleClick);
       });
     };
 
@@ -874,9 +756,10 @@ function App() {
 
   return (
     <div className="App">
-      <ParticlesEffect />
+      {PARTICLES_ENABLED && <ParticlesEffect />}
       <Header />
       <Inicio />
+      <Fortalezas />
       <SobreMi />
       <Habilidades />
       <Proyectos />

@@ -1,169 +1,227 @@
-import React from 'react'
+import { useState } from 'react'
 import './Habilidades.css'
 
-const Habilidades = () => {
-    const habilidadesDuras = [
-        {
-            id: 1,
-            categoria: "Desarrollo y Programación Web",
-            icono: "bx-code-alt",
-            tecnologias: ["HTML", "CSS", "JavaScript", "React", "Vite", "TailwindCSS", "GSAP"],
-            descripcion: "Desarrollo de aplicaciones web modernas con diseño responsivo y animaciones fluidas. Experiencia en consumo de APIs REST, arquitectura por capas en Node.js e integración de microservicios.",
-            color: "#a855f7"
-        },
-        {
-            id: 2,
-            categoria: "Diseño UX/UI y Prototipado",
-            icono: "bx-palette",
-            tecnologias: ["Figma", "Adobe XD", "Photoshop", "Illustrator"],
-            descripcion: "Diseño de interfaces centradas en el usuario, prototipado interactivo y branding. Especializada en experiencias inmersivas y gamificadas con enfoque en usabilidad.",
-            color: "#c084fc"
-        },
-        {
-            id: 3,
-            categoria: "Producción Audiovisual",
-            icono: "bx-video",
-            tecnologias: ["Adobe Premiere Pro", "After Effects"],
-            descripcion: "Edición de video profesional y creación de efectos visuales. Producción de contenido multimedia para redes sociales, trailers y presentaciones corporativas.",
-            color: "#d946ef"
-        },
-        {
-            id: 4,
-            categoria: "Desarrollo de Videojuegos y Realidad Virtual",
-            icono: "bx-joystick",
-            tecnologias: ["Unity", "Blender", "C#"],
-            descripcion: "Desarrollo de experiencias VR y 3D, modelado y animación en Blender. Diseño narrativo y desarrollo de historias interactivas con físicas realistas y NPCs inteligentes.",
-            color: "#7c3aed"
-        },
-        {
-            id: 5,
-            categoria: "Procesamiento de Imágenes e IA",
-            icono: "bx-brain",
-            tecnologias: ["Python", "PyTorch", "CNN", "GAN", "U-Net"],
-            descripcion: "Implementación de redes neuronales para procesamiento digital de imágenes. Experiencia en segmentación, clasificación y transferencia de estilo usando deep learning.",
-            color: "#b946ef"
-        },
-        {
-            id: 6,
-            categoria: "Gestión de Sistemas y Plataformas",
-            icono: "bx-server",
-            tecnologias: ["Freshdesk", "DNS", "Servidores Web"],
-            descripcion: "Configuración y administración de sistemas multimedia aplicados a diferentes sectores: gastronomía, turismo, educación y salud mental.",
-            color: "#8b5cf6"
-        }
-    ];
+const habilidades = [
+    {
+        id: 'ux-ui-producto',
+        titulo: 'UX/UI y producto digital',
+        tono: 'rosa',
+        tecnologias: ['UX Research', 'Figma', 'Prototipado', 'Design Systems'],
+        icono: 'bx-vector',
+        progreso: 90,
+        descripcion: 'Diseño productos digitales centrados en el usuario, desde la investigación y la definición del problema hasta el prototipado, la evaluación y la iteración.',
+        indicadores: [
+            { valor: 'Research', etiqueta: 'descubrimiento' },
+            { valor: 'SUS', etiqueta: 'evaluación' },
+            { valor: 'Responsive', etiqueta: 'adaptabilidad' }
+        ],
+        especialidades: [
+            'Identificación de necesidades',
+            'Arquitectura de información y user flows',
+            'Wireframes y prototipos de alta fidelidad',
+            'Pruebas de usabilidad y accesibilidad',
+            'Diseño iterativo'
+        ],
+        evidencias: [
+            'Investigación, arquitectura visual y flujos de navegación para El viaje del agua.',
+            'Wireframes, prototipo de alta fidelidad y sistema visual de Sabor Cali.',
+            'Evaluación de El viaje del agua con una valoración de 4,75/5 y una puntuación SUS de 83,75/100.'
+        ]
+    },
+    {
+        id: 'frontend',
+        titulo: 'Frontend',
+        tono: 'violeta',
+        tecnologias: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Vite'],
+        icono: 'bx-code-alt',
+        progreso: 85,
+        descripcion: 'Desarrollo interfaces web responsive con React y JavaScript, integrando navegación, autenticación, contenido dinámico y componentes reutilizables.',
+        indicadores: [
+            { valor: 'React', etiqueta: 'framework' },
+            { valor: 'API REST', etiqueta: 'integraciones' },
+            { valor: 'PWA', etiqueta: 'experiencias web' }
+        ],
+        especialidades: [
+            'React Router',
+            'Firebase Authentication',
+            'Consumo de API REST',
+            'localStorage y PWA',
+            'Componentes reutilizables y Vercel'
+        ],
+        evidencias: [
+            'SPA responsive de El viaje del agua desarrollada con React y Vite, con contenido multimedia y herramientas de accesibilidad.',
+            'CineLuxe con React Router, API de TMDB, Firebase Authentication y una interfaz adaptable.',
+            'Portafolio profesional diseñado y desarrollado con React, Vite, JavaScript y CSS.'
+        ]
+    },
+    {
+        id: 'backend-bases-datos',
+        titulo: 'Backend y bases de datos',
+        tono: 'rosa',
+        tecnologias: ['Node.js', 'Express', 'Python', 'Flask', 'MySQL'],
+        icono: 'bx-code-curly',
+        progreso: 78,
+        descripcion: 'Construyo servicios web y soluciones orientadas a datos mediante API REST, autenticación y comunicación entre servicios.',
+        indicadores: [
+            { valor: 'REST', etiqueta: 'servicios web' },
+            { valor: 'JWT', etiqueta: 'autenticación' },
+            { valor: 'SQL', etiqueta: 'persistencia' }
+        ],
+        especialidades: [
+            'Node.js y Express',
+            'Python y Flask',
+            'PHP y C#',
+            'SQL y MySQL',
+            'Comunicación entre microservicios'
+        ],
+        evidencias: [
+            'API REST independientes con Node.js y Express para una red social basada en microservicios.',
+            'Autenticación JWT, roles de usuario, validaciones y bases de datos MySQL separadas por servicio.',
+            'Microservicios de usuarios, productos y órdenes desarrollados con Flask y MySQL para una plataforma e-commerce.'
+        ]
+    },
+    {
+        id: 'herramientas-arquitectura',
+        titulo: 'Herramientas y arquitectura',
+        tono: 'violeta',
+        tecnologias: ['Git', 'GitHub', 'Docker', 'Kubernetes', 'Firebase', 'Vercel'],
+        icono: 'bx-wrench',
+        progreso: 82,
+        descripcion: 'Trabajo con control de versiones, contenerización, despliegue y orquestación para construir y mantener arquitecturas distribuidas.',
+        indicadores: [
+            { valor: 'Git', etiqueta: 'versionado' },
+            { valor: 'Docker', etiqueta: 'contenedores' },
+            { valor: 'K8s', etiqueta: 'orquestación' }
+        ],
+        especialidades: [
+            'Git y GitHub',
+            'Docker y Minikube',
+            'Kubernetes e Istio',
+            'Arquitectura de microservicios',
+            'Firebase y Vercel'
+        ],
+        evidencias: [
+            'Contenerización y orquestación de una plataforma e-commerce mediante Docker, Minikube y Kubernetes.',
+            'Configuración de health checks, HPA, self-healing, circuit breaker, retry policies y pruebas de fallos.',
+            'Monitoreo de microservicios con Prometheus, Grafana y Kiali.'
+        ]
+    }
+]
 
-    const habilidadesBlandas = [
-        {
-            id: 1,
-            titulo: "Creatividad e innovación",
-            icono: "bx-bulb",
-            descripcion: "Soy una persona muy creativa. Me encanta explorar ideas nuevas, ya sea desarrollando videojuegos, diseñando experiencias interactivas o contando historias. Siempre busco soluciones originales que conecten con las personas y que aporten valor visual, emocional y funcional a mis proyectos."
-        },
-        {
-            id: 2,
-            titulo: "Pensamiento crítico y resolución de problemas",
-            icono: "bx-brain",
-            descripcion: "Me gusta analizar cada reto con calma y lógica. Cuando algo se complica (como un bug o un tema técnico que no domino), busco alternativas, investigo y lo enfrento sin rendirme. Sé adaptarme y resolver problemas, incluso bajo presión."
-        },
-        {
-            id: 3,
-            titulo: "Trabajo en equipo y colaboración",
-            icono: "bx-group",
-            descripcion: "Disfruto trabajar con personas de diferentes disciplinas. Me gusta escuchar, proponer, ayudar y aprender de los demás. Valoro el trabajo colaborativo y sé cómo construir relaciones de confianza dentro de un equipo, manteniendo siempre el respeto y la buena comunicación."
-        },
-        {
-            id: 4,
-            titulo: "Comunicación asertiva y empática",
-            icono: "bx-chat",
-            descripcion: "Sé expresar mis ideas con claridad y sensibilidad. Me esfuerzo por que mis mensajes lleguen de forma auténtica, tanto en lo técnico como en lo emocional. Siempre intento ponerme en el lugar del otro, y eso me ha ayudado a conectar con mis compañeros, profesores, usuarios y aliados."
-        },
-        {
-            id: 5,
-            titulo: "Autenticidad y sensibilidad emocional",
-            icono: "bx-heart",
-            descripcion: "Me conozco bien y valoro mis emociones. No tengo miedo de hablar de temas delicados como la salud mental o el impacto emocional de ciertos entornos. Me esfuerzo por ser una persona cercana, humana y empática, porque creo que eso también es liderazgo."
-        },
-        {
-            id: 6,
-            titulo: "Organización y liderazgo",
-            icono: "bx-crown",
-            descripcion: "Me gusta tomar la iniciativa y organizar proyectos, aunque sean complejos o con muchos componentes. Sé cómo dividir tareas, priorizar y mantenerme enfocada. Cuando algo me apasiona, soy muy disciplinada y doy lo mejor de mí hasta verlo terminado."
-        },
-        {
-            id: 7,
-            titulo: "Aprendizaje continuo",
-            icono: "bx-book-open",
-            descripcion: "Tengo una curiosidad constante. Me encanta aprender, incluso si al principio algo me asusta o me da pereza. Siempre busco crecer y adquirir nuevas herramientas, porque sé que eso me permite mejorar y aportar más valor a lo que hago."
-        }
-    ];
+const Habilidades = () => {
+    const [habilidadAbierta, setHabilidadAbierta] = useState(null)
+
+    const alternarHabilidad = (id) => {
+        setHabilidadAbierta((actual) => actual === id ? null : id)
+    }
 
     return (
-        <section className="habilidades" id='habilidades'>
-            <h2 className="heading">Mis <span>Habilidades</span></h2>
-
-            {/* Habilidades Duras */}
-            <div className="habilidades-section">
-                <h3 className="section-title">
-                    <i className='bx bx-code-block'></i>
-                    Habilidades Técnicas
-                </h3>
-                
-                <div className="habilidades-grid">
-                    {habilidadesDuras.map((habilidad, index) => (
-                        <div 
-                            key={habilidad.id} 
-                            className="habilidad-card gsap-habilidad-card" 
-                            data-color={habilidad.color}
-                            data-index={index}
-                        >
-                            <div className="habilidad-icon gsap-habilidad-icon">
-                                <i className={`bx ${habilidad.icono} gsap-icon`} style={{color: habilidad.color}}></i>
-                            </div>
-                            
-                            <div className="habilidad-content">
-                                <h4 className="habilidad-titulo gsap-titulo">{habilidad.categoria}</h4>
-                                
-                                <div className="tecnologias-tags">
-                                    {habilidad.tecnologias.map((tech, techIndex) => (
-                                        <span 
-                                            key={techIndex} 
-                                            className="tech-tag gsap-tech-tag" 
-                                            style={{'--tag-color': habilidad.color}}
-                                            data-tech-index={techIndex}
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                                
-                                <p className="habilidad-descripcion gsap-descripcion">{habilidad.descripcion}</p>
-                            </div>
-                        </div>
-                    ))}
+        <section
+            className={`habilidades${habilidadAbierta ? ' has-open-card' : ''}`}
+            id="habilidades"
+            aria-labelledby="habilidades-title"
+        >
+            <div className="habilidades-content">
+                <div className="habilidades-heading">
+                    <p className="habilidades-eyebrow">
+                        <span aria-hidden="true">✦</span>
+                        Lo que mejor sé hacer
+                    </p>
+                    <h2 className="heading habilidades-title" id="habilidades-title">
+                        Mis <span>Habilidades</span>
+                        <span className="habilidades-corazon" aria-hidden="true">♡</span>
+                    </h2>
                 </div>
+                <p>
+                    Combino investigación UX, diseño de producto y desarrollo web para crear
+                    experiencias digitales accesibles, responsive y centradas en el usuario.
+                </p>
             </div>
 
-            {/* Habilidades Blandas */}
-            <div className="habilidades-section">
-                <h3 className="section-title">
-                    <i className='bx bx-message-dots'></i>
-                    Habilidades Interpersonales
-                </h3>
-                
-                <div className="habilidades-blandas-grid">
-                    {habilidadesBlandas.map((habilidad, index) => (
-                        <div key={habilidad.id} className="habilidad-blanda gsap-habilidad-blanda" data-blanda-index={index}>
-                            <div className="habilidad-blanda-icon gsap-blanda-icon">
-                                <i className={`bx ${habilidad.icono}`}></i>
+            <div className="habilidades-card" aria-label="Áreas de habilidades">
+                {habilidades.map((habilidad) => {
+                    const estaAbierta = habilidadAbierta === habilidad.id
+                    const panelId = `detalle-${habilidad.id}`
+                    const botonId = `boton-${habilidad.id}`
+
+                    return (
+                        <article
+                            className={`habilidad-item habilidad-item--${habilidad.tono}${estaAbierta ? ' is-open' : ''}`}
+                            key={habilidad.id}
+                        >
+                            <button
+                                className="habilidad-trigger"
+                                id={botonId}
+                                type="button"
+                                aria-expanded={estaAbierta}
+                                aria-controls={panelId}
+                                onClick={() => alternarHabilidad(habilidad.id)}
+                            >
+                                <span className="habilidad-icon" aria-hidden="true">
+                                    <i className={`bx ${habilidad.icono}`}></i>
+                                </span>
+
+                                <span className="habilidad-resumen">
+                                    <h3>{habilidad.titulo}</h3>
+                                    <span className="habilidad-tecnologias">
+                                        {habilidad.tecnologias.join(' · ')}
+                                    </span>
+                                </span>
+
+                                <span className="habilidad-chevron" aria-hidden="true">
+                                    <i className="bx bx-chevron-right"></i>
+                                </span>
+
+                                <span className="habilidad-progreso" aria-hidden="true">
+                                    <span style={{ '--habilidad-progreso': `${habilidad.progreso}%` }}></span>
+                                </span>
+                            </button>
+
+                            <div
+                                className={`habilidad-detalle${estaAbierta ? ' is-visible' : ''}`}
+                                id={panelId}
+                                role="region"
+                                aria-labelledby={botonId}
+                                aria-hidden={!estaAbierta}
+                            >
+                                <div className="habilidad-detalle-contenido">
+                                    <div className="habilidad-divisor" aria-hidden="true"></div>
+
+                                    <p className="habilidad-descripcion">{habilidad.descripcion}</p>
+
+                                    <div className="habilidad-indicadores" aria-label={`Datos clave de ${habilidad.titulo}`}>
+                                        {habilidad.indicadores.map(({ valor, etiqueta }) => (
+                                            <div className="habilidad-indicador" key={etiqueta}>
+                                                <strong>{valor}</strong>
+                                                <span>{etiqueta}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="habilidad-especialidades">
+                                        <ul>
+                                            {habilidad.especialidades.map((especialidad) => (
+                                                <li key={especialidad}>{especialidad}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div className="habilidad-evidencia">
+                                        <h4>// Experiencia aplicada</h4>
+                                        <ul>
+                                            {habilidad.evidencias.map((evidencia) => (
+                                                <li key={evidencia}>
+                                                    <span aria-hidden="true">→</span>
+                                                    <span>{evidencia}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="habilidad-blanda-content gsap-blanda-content">
-                                <h4>{habilidad.titulo}</h4>
-                                <p>{habilidad.descripcion}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                        </article>
+                    )
+                })}
             </div>
         </section>
     )
